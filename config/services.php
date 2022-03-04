@@ -17,7 +17,7 @@ return [
     'google' => [
         'client_id'     => '449502118135-a03i490cc593s03idun47doq2ep9a1ol.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect'      => 'https://depedgin-llrms.herokuapp.com/callback/google',
+        'redirect'      => 'http://127.0.0.1:8000/callback/google',
     ],
 
     'mailgun' => [
