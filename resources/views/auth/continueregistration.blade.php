@@ -11,11 +11,12 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        <!-- Pass google_id if user have chosen to sign in with google -->
                         @if(isset($google_id))
                             <input type="hidden" name="google_id" value="{{ $google_id }}" />
                         @endif
 
-                        <div class="row mb-3" hidden>
+                        <div class="row mb-3" hidden> <!-- Hidden since already filled during initial registration -->
                             <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
@@ -114,7 +115,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3" hidden>
+                        <div class="row mb-3" hidden> <!-- Hidden since already filled during initial registration -->
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">

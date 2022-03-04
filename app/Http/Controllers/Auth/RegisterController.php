@@ -60,13 +60,19 @@ class RegisterController extends Controller
         ]);
     }
 
+    //Recieves data from initial registration to be passed into complete registration blade file
     protected function continueRegister(Request $request)
     {
+        //Data retrieved from user's initial registration
         $username = $request->username;
         $email = $request->email;
+
+        //Entities from each table to use for select options
         $groups = DB::table('tb_groups')->get();
         $offices = DB::table('tb_office')->get();
         $positions = DB::table('tb_positions')->get();
+
+        //redirect to continue registration page with data above
         return view('auth.continueregistration', compact('username', 'email', 'groups', 'offices', 'positions'));
     }
 
@@ -78,6 +84,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        //User creation if user choose to sign in with google
         if(!(isset($data['google_id']))){
             return User::create([
                 'username' => $data['username'],
@@ -90,6 +97,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
             ]);
         }else{
+            //If user did not choose to sign in with google
             return User::create([
                 'username' => $data['username'],
                 'first_name' => $data['first_name'],
