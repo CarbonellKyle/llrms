@@ -27,14 +27,6 @@ public function callback()
                 Auth::login($user);
                 return redirect('/home');
             }else{
-                /*$newUser = User::create([
-                    'name' => $googleUser->name,
-                    'email' => $googleUser->email,
-                    'google_id'=> $googleUser->id,
-                    'password' => encrypt('123456dummy')
-                ]);
-                Auth::login($newUser);
-                return redirect('/home');*/
                 $username = $googleUser->name;
                 $email = $googleUser->email;
                 $google_id = $googleUser->id;

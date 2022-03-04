@@ -155,8 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', ''),
-    //'domain' => 'llrms.com',
+    'domain' => env('SESSION_DOMAIN', 'https://depedgin-llrms.herokuapp.com/'),
 
     /*
     |--------------------------------------------------------------------------
