@@ -5,11 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register with Google') }}</div>
+                <div class="card-header">{{ __('Finish your Registration') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+
+                        @if(isset($google_id))
+                            <input type="hidden" name="google_id" value="{{ $google_id }}" />
+                        @endif
 
                         <div class="row mb-3" hidden>
                             <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
@@ -123,8 +127,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <input type="hidden" name="google_id" value="{{ $google_id }}" />
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>

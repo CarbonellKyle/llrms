@@ -48,26 +48,23 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <a href="{{ url('/redirect') }}" class="btn btn-primary"><i class="fa fa-google"></i> Log in with Google</a>
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-2 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+                            </div>
+                            <div class="col-md-1 mt-2">Or</div>
+                            <div class="col-md-4">
+                                <a href="{{ url('/redirect') }}" class="btn btn-primary"><i class="fa fa-google"></i> Log in with Google</a>
                             </div>
                         </div>
                     </form>

@@ -41,7 +41,7 @@ public function callback()
                 $groups = DB::table('tb_groups')->get();
                 $offices = DB::table('tb_office')->get();
                 $positions = DB::table('tb_positions')->get();
-                return view('auth.registerwithgoogle', compact('username', 'email', 'google_id', 'groups', 'offices', 'positions'));
+                return view('auth.continueregistration', compact('username', 'email', 'google_id', 'groups', 'offices', 'positions'));
             }
         } catch (Exception $e) {
             dd($e->getMessage());

@@ -6,7 +6,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB;
 
 trait RegistersUsers
 {
@@ -19,10 +19,10 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        $groups = DB::table('tb_groups')->get();
-        $offices = DB::table('tb_office')->get();
-        $positions = DB::table('tb_positions')->get();
-        return view('auth.register', compact('groups', 'offices', 'positions'));
+        //$groups = DB::table('tb_groups')->get();
+        //$offices = DB::table('tb_office')->get();
+        //$positions = DB::table('tb_positions')->get();
+        return view('auth.register');
     }
 
     /**

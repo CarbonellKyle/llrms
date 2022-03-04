@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -59,6 +60,16 @@ class RegisterController extends Controller
         ]);
     }
 
+    protected function continueRegister(Request $request)
+    {
+        $username = $request->username;
+        $email = $request->email;
+        $groups = DB::table('tb_groups')->get();
+        $offices = DB::table('tb_office')->get();
+        $positions = DB::table('tb_positions')->get();
+        return view('auth.continueregistration', compact('username', 'email', 'groups', 'offices', 'positions'));
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -67,7 +78,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if($data['google_id']==null){
+        if(!(isset($data['google_id']))){
             return User::create([
                 'username' => $data['username'],
                 'first_name' => $data['first_name'],
