@@ -13,7 +13,7 @@
 <div class="content-wrapper">
 	<section id="form-wrapper" class="shadow-lg px-4 bg-white">
 		<div class="text-center">
-			<a href="#"><img src="{{ asset('images/lrmds-logo.png') }}" class="logo img-fluid" alt="LRDMS Logo"></a>
+			<h1 class="mb-3">{{ __('Login') }}</h1>
 		</div>
 		<form method="POST" action="{{ route('login') }}">
             @csrf
@@ -36,7 +36,7 @@
             @enderror
             <!-- Password Input End -->
 			
-			<button type="submit" class="btn btn-lg bg-color-1 text-white w-100">Sign In</button>
+			<button type="submit" class="btn btn-lg bg-color-1 text-white w-100">Login</button>
 			<div class="or py-2">
 				<hr>
 				<p class="text-uppercase text-center bg-white px-3">or</p>
