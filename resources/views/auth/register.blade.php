@@ -12,8 +12,8 @@
 </style>
 <div class="content-wrapper">
 	<section id="form-wrapper" class="shadow-lg px-4 bg-white">
-		<div class="text-center">
-			<a href="#"><img src="{{ asset('images/lrmds-logo.png') }}" class="logo img-fluid" alt="LRDMS Logo"></a>
+        <div class="text-center">
+			<h1 class="mb-3">{{ __('Register') }}</h1>
 		</div>
 		<form method="GET" action="{{ route('continueRegister') }}">
             @csrf
@@ -36,7 +36,7 @@
             @enderror
             <!-- Email Input End -->
 			
-			<button type="submit" class="btn btn-lg bg-color-1 text-white w-100">Sign Up</button>
+			<button type="submit" class="btn btn-lg bg-color-1 text-white w-100">Register</button>
 			<div class="or py-2">
 				<hr>
 				<p class="text-uppercase text-center bg-white px-3">or</p>
