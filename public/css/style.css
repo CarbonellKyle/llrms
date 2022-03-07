@@ -1,26 +1,27 @@
 /* Form Styles */
 
 .bg-color-1 {
-    background-color: #97D154;
-  }
-  .content-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-  }
-  #form-wrapper {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
-  }
-  #form-wrapper .logo {
-    width: 180px;
-    padding: 10px 0 10px 0;
-  }
-  #form-wrapper .or p {
-    position: absolute;
-    margin-top: -30px;
-    margin-left: 115px;
-  }
+  background-color: #50b748;
+}
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+#form-wrapper {
+  
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+#form-wrapper .logo {
+  width: 180px;
+  padding: 10px 0 10px 0;
+}
+#form-wrapper .or p {
+  position: absolute;
+  margin-top: -30px;
+  margin-left: 115px;
+}
