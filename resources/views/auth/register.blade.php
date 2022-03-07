@@ -1,62 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="GET" action="{{ route('continueRegister') }}">
-                        @csrf
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-image:linear-gradient(#50b748, #3256A7);
+    }
+</style>
+<div class="content-wrapper">
+	<section id="form-wrapper" class="shadow-lg px-4 bg-white">
+        <div class="text-center">
+			<h1 class="mb-3">{{ __('Register') }}</h1>
+		</div>
+		<form method="GET" action="{{ route('continueRegister') }}">
+            @csrf
 
-                        <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-2 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Sign up') }}
-                                </button>
-                            </div>
-                            <div class="col-md-1 mt-2">Or</div>
-                            <div class="col-md-4">
-                                <a href="{{ url('/redirect') }}" class="btn btn-primary"><i class="fa fa-google"></i> Sign up with Google</a>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-3">
-                            
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+			<!-- Username Input Start -->
+            <input id="username" type="text" class="my-2 py-2 form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Username" required autocomplete="username" autofocus>
+            @error('username')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            <!-- Username Input SEnd -->
+			
+            <!-- Email Input Start -->
+            <input id="email" type="email" class="my-2 py-2 form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+            <!-- Email Input End -->
+			
+			<button type="submit" class="btn btn-lg bg-color-1 text-white w-100">Register</button>
+			<div class="or py-2">
+				<hr>
+				<p class="text-uppercase text-center bg-white px-3">or</p>
+			</div>
+			<a href="{{ url('/redirect') }}"><img src="{{ asset('images/google-signup.png') }}" class="img-fluid" alt="Google Sign In"></a>
+			<p class="mt-2 text-center">Already had an account? <a href="{{ url('/login') }}" class="text-decoration-none text-primary">Sign In Now!</a></p>
+		</form>
+	</section>
 </div>
+
 @endsection
