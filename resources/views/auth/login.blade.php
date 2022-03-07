@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #50b748;
+        background-image:linear-gradient(#50b748, #3256A7);
+    }
+</style>
 <div class="content-wrapper">
 	<section id="form-wrapper" class="shadow-lg px-4 bg-white">
 		<div class="text-center">
@@ -34,7 +42,7 @@
 				<p class="text-uppercase text-center bg-white px-3">or</p>
 			</div>
 			<a href="{{ url('/redirect') }}"><img src="{{ asset('images/google-signin.png') }}" class="img-fluid" alt="LRDMS Logo"></a>
-			<p class="mt-2 text-center">Don't have an account? <a href="signup.php" class="text-decoration-none text-primary">Sign Up Now!</a></p>
+			<p class="mt-2 text-center">Don't have an account? <a href="{{ url('/register') }}" class="text-decoration-none text-primary">Sign Up Now!</a></p>
 		</form>
 	</section>
 </div>
