@@ -26,6 +26,15 @@ public function callback()
             //If user already have an account in this app
             if($user){
                 Auth::login($user);
+                if($user->group_id==1){
+                    return redirect('/personnel');
+                }
+                elseif($user->group_id==2){
+                    return redirect('/teacher');
+                }
+                elseif($user->group_id==3){
+                    return redirect('/student');
+                }
                 return redirect('/home');
             }else{
                 //Data retrieved from user's google account
