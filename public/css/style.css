@@ -1,9 +1,11 @@
 /* Form Styles */
 
-.bg-color-1 {
-  background-color: #50b748;
+.bg-color-1 {background-color: #50b748;}
+.text-justify {text-align: justify;}
+.site-grad {
+  background-image:linear-gradient(#50b748, #3256A7);
 }
-.content-wrapper {
+.site-grid {
   display: flex;
   align-items: center;
   justify-content: center;
