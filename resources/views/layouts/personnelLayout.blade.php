@@ -36,7 +36,7 @@
 				<img src="{{ asset('images/lrmds-logo.png') }}" class="img-fluid p-4" alt="Google Sign In">
 			</div>
   		<ul class="nav">
-				<p class="nav-text text-white">{{ Auth::user()->username }} <br> <span class="small">&bull; Position Here</span></p>
+				<p class="nav-text text-white">{{ Auth::user()->username }} <br> <span class="small">&bull; {{ $position }}</span></p>
 				<li class="nav-item">
 							<a href="{{ url('/personnel') }}" class="nav-link active">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">

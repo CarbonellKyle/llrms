@@ -1,4 +1,4 @@
-@extends('layouts.personnelLayout')
+@extends('layouts.personnelLayout', ['position' => $position])
 
 @section('content')
 <div id="content" class="content-wrapper p-3">
@@ -25,7 +25,7 @@
 					</div>
 					<div class="box-text">
 						<h4>{{ __('Teachers') }}</h4>
-						<p>Number of teachers</p>
+						<p>{{ $noOfTeachers }}</p>
 					</div>
 				</div>
 			</div>
@@ -39,7 +39,7 @@
 					</div>
 					<div class="box-text">
 						<h4>{{ __('Students') }}</h4>
-                        <p>Number of Students</p>
+                        <p>{{ $noOfStudents }}</p>
 					</div>
 				</div>
 			</div>	
