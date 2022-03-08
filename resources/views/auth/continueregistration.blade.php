@@ -83,7 +83,7 @@
                 <!-- Position Select End -->
 
                 <!-- Hidden since already filled during initial registration -->
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email }}" required autocomplete="email">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email }}" required hidden autocomplete="email">
 
                 <!-- Password Input Start -->
                 <input id="password" type="password" class="my-2 py-2 form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
