@@ -25,7 +25,7 @@
 					</div>
 					<div class="box-text">
 						<h4>{{ __('Teachers') }}</h4>
-						<p>Number of teachers')</p>
+						<p>Number of teachers</p>
 					</div>
 				</div>
 			</div>
