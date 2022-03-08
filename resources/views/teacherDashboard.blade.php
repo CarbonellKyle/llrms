@@ -18,7 +18,6 @@
                 </div>
             </div>
         </div>
-        <a class="btn btn-primary" href="{{ route('profile.edit') }}">{{ __('My profile') }}</a>
     </div>
 </div>
 @endsection

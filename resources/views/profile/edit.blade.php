@@ -1,7 +1,4 @@
-@extends('layouts.app', [
-    'class' => '',
-    'elementActive' => 'profile'
-])
+@extends('layouts.app')
 
 @section('content')
     <div class="content">
@@ -32,33 +29,7 @@
 
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-user">
-                    <div class="image">
-                        <img src="{{ asset('paper/img/bg/farm6.jpg') }}" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class="author">
-                            <a href="#">
-                                <img class="avatar border-gray" src="{{ asset('paper') }}/img/default-avatar.png" alt="...">
-
-                                <h5 class="title">{{ __(auth()->user()->name)}}</h5>
-                            </a>
-                            <p class="description text-center">
-                                {{ (Auth::user()->hasRole('administrator')) ? 'Administrator' : 'Registered User' }}
-                            </p>
-                        </div>
-                        <!-- Admin Settings: Only appears if the account is Admin -->
-                        <div class="text-center" @if (!((Auth::user()->hasRole('administrator'))||(Auth::user()->hasRole('superadministrator')))) hidden @endif>    
-                            <a class="btn btn-round btn-warning" href="{{ route('adminSettings') }}">
-                                <i class="icon-big nc-icon nc-touch-id text-light"></i>
-                                <strong>Admin Settings</strong>
-                            </a>
-                        </div> 
-                    </div>
-                    <div class="card-footer">
-                        
-                    </div>
-                </div>
+    
             </div>
             <div class="col-md-8 text-center">
                 <form class="col-md-12" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
@@ -70,10 +41,10 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <label class="col-md-3 col-form-label">{{ __('Name') }}</label>
+                                <label class="col-md-3 col-form-label">{{ __('Username') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ auth()->user()->name }}" required>
+                                        <input type="text" name="username" class="form-control" placeholder="Name" value="{{ auth()->user()->username }}" required>
                                     </div>
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -86,7 +57,7 @@
                                 <label class="col-md-3 col-form-label">{{ __('Email') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ auth()->user()->email }}" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Email" value="{{ auth()->user()->email }}" required @if(auth()->user()->google_id!=null) disabled @endif>
                                     </div>
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" style="display: block;" role="alert">
@@ -95,6 +66,59 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="row">
+                                <label class="col-md-3 col-form-label">{{ __('Firstname') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" name="first_name" class="form-control" placeholder="Firstname" value="{{ auth()->user()->first_name }}" required>
+                                    </div>
+                                    @if ($errors->has('first_name'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('first_name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-3 col-form-label">{{ __('Lastname') }}</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" name="last_name" class="form-control" placeholder="Lastname" value="{{ auth()->user()->last_name }}" required>
+                                    </div>
+                                    @if ($errors->has('last_name'))
+                                        <span class="invalid-feedback" style="display: block;" role="alert">
+                                            <strong>{{ $errors->first('last_name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- Office Select Start -->
+                            <select name="office_id" class="form-select" required>
+                                <option value="{{ $user_office->office_id }}" selected="selected" hidden>{{ $user_office->officename }}</option>
+                                @foreach( $offices as $office )
+                                    <option value="{{ $office->id }}">{{ $office->officename }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('office_id'))
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $errors->first('office_id') }}</strong>
+                                </span>
+                            @endif
+                            <!-- Office Select End -->
+
+                            <!-- Position Select Start -->
+                            <select name="position_id" class="my-2 py-2 form-select" required>
+                                <option value="{{ $user_position->position_id }}" selected="selected" hidden>{{ $user_position->name }}</option>
+                                @foreach( $positions as $position )
+                                    <option value="{{ $position->id }}">{{ $position->name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('position_id'))
+                                <span class="invalid-feedback" style="display: block;" role="alert">
+                                    <strong>{{ $errors->first('position_id') }}</strong>
+                                </span>
+                            @endif
+                            <!-- Position Select End -->
                         </div>
                         <div class="card-footer ">
                             <div class="row">
@@ -105,7 +129,7 @@
                         </div>
                     </div>
                 </form>
-                <form class="col-md-12" action="{{ route('profile.password') }}" method="POST">
+                <form class="col-md-12 mt-5" action="{{ route('profile.password') }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="card">

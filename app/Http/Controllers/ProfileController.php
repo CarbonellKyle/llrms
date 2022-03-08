@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -15,7 +16,19 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile.edit');
+        $offices = DB::table('tb_office')->get();
+        $user_office = DB::table('users')
+        ->join('tb_office', 'users.office_id', 'tb_office.id') //To get officename at tb_office
+        ->select('users.*', 'tb_office.officename')
+        ->where('users.id', auth()->user()->id)->first();
+
+        $positions = DB::table('tb_positions')->get();
+        $user_position = DB::table('users')
+        ->join('tb_positions', 'users.position_id', 'tb_positions.id') //To get officename at tb_office
+        ->select('users.*', 'tb_positions.name')
+        ->where('users.id', auth()->user()->id)->first();
+
+        return view('profile.edit', compact('offices', 'user_office', 'positions', 'user_position'));
     }
 
     /**
