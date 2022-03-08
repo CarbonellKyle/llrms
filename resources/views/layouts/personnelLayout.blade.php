@@ -33,7 +33,7 @@
 
 	<div class="vertical-nav" id="vertical-nav-toggle">
 			<div class="nav-logo bg-white">
-				<img src="{{ asset('images/lrmds-logo.png') }}" class="img-fluid p-4" alt="Google Sign In">
+				<img src="{{ asset('images/lrmds-logo.png') }}" class="img-fluid" alt="Google Sign In">
 			</div>
   		<ul class="nav">
 				<p class="nav-text text-white">{{ Auth::user()->username }} <br> <span class="small">&bull; Position Here</span></p>
