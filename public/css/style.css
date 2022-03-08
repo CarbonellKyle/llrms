@@ -1,14 +1,15 @@
 /* Form Styles */
 
 .bg-color-1 {background-color: #50b748;}
+.bg-color-2 {background-color: #215b12;}
+.bg-color-3 {background-color: #333;}
 .text-justify {text-align: justify;}
-.site-grad {
-  background-image:linear-gradient(#50b748, #3256A7);
-}
+.navbar-brand {width: 150px;}
+.site-grad {background-image:linear-gradient(#50b748, #3256A7);}
 .site-grid {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;  
   height: calc(100vh - 8rem);
   background-color: transparent;
   background-image: 
@@ -32,11 +33,46 @@
   padding: 15px;
   margin: auto;
 }
-.navbar-brand {
-  width: 150px;
-}
 #form-wrapper .or p {
   position: absolute;
   margin-top: -30px;
   margin-left: 115px;
 }
+
+/* Dashboard CSS Start */
+.vertical-nav {min-width: 17rem; width: 17rem; height: 100%; position: fixed; top: 0; left: 0; background-color: #333; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); transition: all 0.4s; z-index: 999999;}
+.vertical-nav .logo {text-align: center; min-width: 150px; padding: 20px 0 0 0;}
+.vertical-nav ul.nav {flex-flow: column; height: 100%;}
+.vertical-nav ul.nav .nav-text {font-weight: bold; padding: 20px; margin: 0; color: #777;}
+.vertical-nav ul.nav li.nav-item .active,
+.vertical-nav ul.nav li.nav-item a:hover {background-color: #50b748; color: #fff;}
+.vertical-nav ul.nav li.nav-item a {color: #fff;}
+.vertical-nav ul.nav li.nav-item a:hover .badge {
+  background-color: #fff !important;
+  color: #555;
+}
+#vertical-nav-toggle.active {margin-left: -17rem;}
+
+.content-wrapper {width: calc(100% - 17rem); margin-left: 17rem; transition: all 0.4s;} 
+.content-wrapper .row {padding: 15px 1px 15px 1px;}
+.content-wrapper .row .box-body {background-color: #fff; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); padding: 30px; border-radius: 5px; margin-bottom: 15px;}
+.content-wrapper .row .box-body .box-image {background-color: #50b748; width: 80px; height: 75px; margin: -30px; padding: 1px;}
+.content-wrapper .row .box-body .box-image svg {display: flex; justify-content: center; align-items: center; height: 73px; color: #fff; margin-left: 23px;}
+.content-wrapper .row .box-body .box-text {position: absolute;} 
+.content-wrapper .row .box-body .box-text h4 {margin-top: -33px; margin-left: 70px;} 
+.content-wrapper .row .box-body .box-text p {margin-top: -10px; margin-left: 71px; color: #888;} 
+#content #sidebarCollapse {margin-left: -30px;}
+#content.active {width: 100%;margin: 0;}
+
+@media (max-width: 768px) {
+  #vertical-nav-toggle {margin-left: -17rem;}
+  #vertical-nav-toggle.active {margin-left: 0;}
+
+  #content {width: 100%; margin: 0;}
+  #content.active {width: 100%;}
+  #content #sidebarCollapse {transition: all 0.4s;}
+  #content.active #sidebarCollapse {transition: all 0.4s;margin-left: 15rem;}
+}
+
+
+/* Dashboard CSS End */
