@@ -13,12 +13,12 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
-      // Sidebar Collapse Function
-      $(document).ready(function() {  
+    // Sidebar Collapse Function
+    $(document).ready(function() {  
         $('#sidebarCollapse').on('click', function() {
             $('#vertical-nav-toggle, #content').toggleClass('active');
         });
-      });
+    });
     </script>
 
     <!-- Fonts -->
@@ -32,9 +32,9 @@
 <body>
 
 	<div class="vertical-nav" id="vertical-nav-toggle">
-			<div class="nav-logo bg-white">
-				<img src="{{ asset('images/lrmds-logo.png') }}" class="img-fluid" alt="Google Sign In">
-			</div>
+		<div class="nav-logo bg-white p-4">
+			<img src="{{ asset('images/lrmds-logo.png') }}" class="img-fluid" alt="LRMDS Logo">
+		</div>
   		<ul class="nav">
 				<p class="nav-text text-white">{{ Auth::user()->username }} <br> <span class="small">&bull; {{ $position }}</span></p>
 				<li class="nav-item">
