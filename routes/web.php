@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LearningResourceController;
 
 
 
@@ -46,5 +47,9 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/personnel', [PersonnelController::class, 'index'])->name('personnel.index');
 Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+
+//LearningResourceController Routes
+Route::get('/learningresource', [LearningResourceController::class, 'index'])->name('learningresource.index');
+Route::get('/learningresource/upload', [LearningResourceController::class, 'upload'])->name('learningresource.upload');
 
 

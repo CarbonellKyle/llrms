@@ -1,4 +1,5 @@
-@extends('layouts.personnelLayout', ['position' => $user_position->name])
+@extends($layout, $data) 
+<!-- $layout is the layout file to extend, $data contains variables to be pass at the layout file from the controller -->
 
 @section('content')
 <div id="content" class="content-wrapper p-3">

@@ -28,7 +28,17 @@ class ProfileController extends Controller
         ->select('users.*', 'tb_positions.name')
         ->where('users.id', auth()->user()->id)->first();
 
-        return view('profile.edit', compact('offices', 'user_office', 'positions', 'user_position'));
+        //Determines which layout file to extend base on user type
+        if(auth()->user()->group_id==1) {
+            //If user is a personnel
+            $layout = 'layouts.personnelLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav
+        } else {
+            $layout = 'layouts.app';
+            $data = [];
+        }
+
+        return view('profile.edit', compact('layout', 'data', 'offices', 'user_office', 'positions', 'user_position'));
     }
 
     /**
