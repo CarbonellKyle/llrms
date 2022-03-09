@@ -14,7 +14,7 @@
                 <!-- Email Input Start -->
                 <div class="form-floating">
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email" autofocus>
-                    <label for="floatingInput">Email address</label>
+                    <label for="email">Email address</label>
                 </div>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -24,7 +24,10 @@
                 <!-- Email Input SEnd -->
                 
                 <!-- Password Input Start -->
-                <input id="password" type="password" class="my-2 py-2 form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
+                <div class="form-floating my-2">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
+                    <label for="password">Password</label>
+                </div>
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

@@ -12,7 +12,10 @@
                 @csrf
 
                 <!-- Username Input Start -->
-                <input id="username" type="text" class="my-2 py-2 form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Username" required autocomplete="username" autofocus>
+                <div class="form-floating">
+                    <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Username" required autocomplete="username" autofocus>
+                    <label for="username">Username</label>
+                </div>
                 @error('username')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -21,7 +24,10 @@
                 <!-- Username Input SEnd -->
                 
                 <!-- Email Input Start -->
-                <input id="email" type="email" class="my-2 py-2 form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
+                <div class="form-floating my-2">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
+                    <label for="email">Email</label>
+                </div>
                 @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
