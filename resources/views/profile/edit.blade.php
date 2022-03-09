@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @extends('layouts.personnelLayout')
+=======
+@extends('layouts.personnelLayout', ['position' => $user_position->name])
+>>>>>>> f88ce007430e91fbbe2c79dfda3c4e69b37fc94e
 
 @section('content')
     <div class="content">
