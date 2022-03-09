@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.personnelLayout', ['position' => $user_position->name])
 
 @section('content')
     <div class="content">
