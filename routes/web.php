@@ -49,7 +49,7 @@ Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
 
 //LearningResourceController Routes
-Route::get('/learningresource', [LearningResourceController::class, 'index'])->name('learningresource.index');
+Route::get('/learningresource/index', [LearningResourceController::class, 'index'])->name('learningresource.index');
 Route::get('/learningresource/upload', [LearningResourceController::class, 'upload'])->name('learningresource.upload');
 Route::post('/learningresource/upload', [LearningResourceController::class, 'uploadSubmit'])->name('learningresource.uploadSubmit');
 

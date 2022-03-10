@@ -8,66 +8,66 @@
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
         </svg>
     </button>
-  	<div class="container">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="title m-0">{{ __('Upload Files') }}</h5>
+  	
+    <div class="col-lg-12">
+        <a href="{{ route('learningresource.index') }}" class="btn btn-primary mb-2">Manage Resources</a>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title m-0">{{ __('Upload Files') }}</h5>
+            </div>
+            <div class="card-body">
+            <form action="{{ route('learningresource.uploadSubmit') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <!-- Hidden since user already logged in -->
+                <input type="hidden" name="uploadedbyid" value="{{ auth()->user()->id }}">
+
+                <!-- Input File Start -->
+                <input type="file" name="file" class="form-control">
+                <!-- Input File End -->
+
+                <!-- Grade Level Select Start -->
+                <div class="form-floating my-2">
+                    <select class="form-select" id="grade_level" name="grade_level">
+                        <option value="0" selected>Kinder</option>
+                        <option value="1">Grade 1</option>
+                        <option value="2">Grade 2</option>
+                        <option value="3">Grade 3</option>
+                        <option value="4">Grade 4</option>
+                        <option value="5">Grade 5</option>
+                        <option value="6">Grade 6</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                    <label for="grade_level">Grade Level</label>
                 </div>
-                <div class="card-body">
-                <form action="{{ route('learningresource.uploadSubmit') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <!-- Hidden since user already logged in -->
-                    <input type="hidden" name="uploadedbyid" value="{{ auth()->user()->id }}">
+                <!-- Grade Level Select End -->
 
-                    <!-- Input File Start -->
-                    <input type="file" name="file" class="form-control">
-                    <!-- Input File End -->
+                <!-- Subject Start -->
+                <div class="form-floating">
+                    <select class="form-select" id="subject_name" name="subject_name">
+                        <option value="D1">Domain 1</option>
+                        <option value="D2">Domain 2</option>
+                        <option value="D3">Domain 3</option>
+                        <option value="D4">Domain 4</option>
+                        <option value="D5">Domain 5</option>
+                        <option value="D6">Domain 6</option>
+                        <option value="D7">Domain 7</option>
+                    </select>
+                    <label for="subject_name">Subject</label>
+                </div>
+                <!-- Subject End -->
 
-                    <!-- Grade Level Select Start -->
-                    <div class="form-floating my-2">
-                        <select class="form-select" id="grade_level" name="grade_level">
-                            <option value="0" selected>Kinder</option>
-                            <option value="1">Grade 1</option>
-                            <option value="2">Grade 2</option>
-                            <option value="3">Grade 3</option>
-                            <option value="4">Grade 4</option>
-                            <option value="5">Grade 5</option>
-                            <option value="6">Grade 6</option>
-                            <option value="7">Grade 7</option>
-                            <option value="8">Grade 8</option>
-                            <option value="9">Grade 9</option>
-                            <option value="10">Grade 10</option>
-                            <option value="11">Grade 11</option>
-                            <option value="12">Grade 12</option>
-                        </select>
-                        <label for="grade_level">Grade Level</label>
-                    </div>
-                    <!-- Grade Level Select End -->
+                <!-- File Description Start -->
+                <textarea name="filedescription" id="file_desciption" class="form-control my-2" style="height: 100px; resize: none;" placeholder="Description"></textarea>
+                <!-- File Description End -->
 
-                    <!-- Subject Start -->
-                    <div class="form-floating">
-                        <select class="form-select" id="subject_name" name="subject_name">
-                            <option value="D1">Domain 1</option>
-                            <option value="D2">Domain 2</option>
-                            <option value="D3">Domain 3</option>
-                            <option value="D4">Domain 4</option>
-                            <option value="D5">Domain 5</option>
-                            <option value="D6">Domain 6</option>
-                            <option value="D7">Domain 7</option>
-                        </select>
-                        <label for="subject_name">Subject</label>
-                    </div>
-                    <!-- Subject End -->
-
-                    <!-- File Description Start -->
-                    <textarea name="filedescription" id="file_desciption" class="form-control my-2" style="height: 100px; resize: none;" placeholder="Description"></textarea>
-                    <!-- File Description End -->
-
-                    <button class="btn btn-primary w-100" type="submit">Upload</button>
-                </form>
-            </div>
-            </div>
+                <button class="btn btn-primary w-100" type="submit">Upload</button>
+            </form>
+        </div>
         </div>
     </div>
 
