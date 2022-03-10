@@ -48,7 +48,6 @@ Route::group(['middleware' => 'auth'], function () {
 //Dashboards
 Route::get('/personnel', [PersonnelController::class, 'index'])->name('personnel.index');
 Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index');
-Route::get('/student', [StudentController::class, 'index'])->name('student.index');
 
 //LearningResourceController Routes
 Route::get('/learningresource/index', [LearningResourceController::class, 'index'])->name('learningresource.index');
@@ -56,8 +55,9 @@ Route::get('/learningresource/upload', [LearningResourceController::class, 'uplo
 Route::post('/learningresource/upload', [LearningResourceController::class, 'uploadSubmit'])->name('learningresource.uploadSubmit');
 
 
-// StudentController Routes
-Route::get('/student/resources', [LearningResourceController::class, 'studentDashboard'])->name('studentDashboard');
+//StudentController Routes
+Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+Route::get('/student/resources', [StudentController::class, 'getResources'])->name('student.getResources');
 
 //Download Routes
 Route::get('/download', [DownloadController::class, 'download'])->name('download');

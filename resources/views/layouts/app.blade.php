@@ -40,9 +40,9 @@
                                 <a class="nav-link" href="{{ route('student.index') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('studentDashboard') }}">{{ __('Resources') }}</a>
+                                <a class="nav-link" href="{{ route('student.getResources') }}">{{ __('Resources') }}</a>
                             </li>
-                        @endguest
+                    @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
