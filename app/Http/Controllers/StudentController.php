@@ -28,6 +28,6 @@ class StudentController extends Controller
         $files = DB::table('tb_learningresource')->where('grade_level', $grade_level)->get();
         $numRows = count($files);
 
-        return view('studentDashboard', compact('files', 'numRows'));
+        return view('welcome', compact('files', 'numRows'));
     }
 }

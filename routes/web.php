@@ -56,6 +56,9 @@ Route::get('/learningresource/upload', [LearningResourceController::class, 'uplo
 Route::post('/learningresource/upload', [LearningResourceController::class, 'uploadSubmit'])->name('learningresource.uploadSubmit');
 
 
+// StudentController Routes
+Route::get('/student/resources', [LearningResourceController::class, 'studentDashboard'])->name('studentDashboard');
+
 //Download Routes
 Route::get('/download', [DownloadController::class, 'download'])->name('download');
 
