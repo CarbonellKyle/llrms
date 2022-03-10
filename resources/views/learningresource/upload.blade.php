@@ -11,5 +11,25 @@
   	<div class="container">
         <h2 class="text-center">Learning Resource</h2>
         <h3>Upload Files<h3>
+        <div class="col-md-6">
+            @error('file')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
+
+            @if(Session::has('file_uploaded'))
+                <div class="alert alert-success" role="alert">
+                    {{Session::get('file_uploaded')}}
+                </div>
+            @endif
+            <form action="{{ route('learningresource.uploadSubmit') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="uploadedbyid" value="{{ auth()->user()->id }}">
+                File: <input type="file" name="file" class="form-control">
+                Grade Level: <input type="number" name="grade_level" class="form-control">
+                Subject: <input type="text" name="subject_name" class="form-control">
+                Description: <input type="text" name="filedescription" class="form-control">
+                <button class="btn btn-primary" type="submit">Upload</button>
+            </form>
+        </div>
     </div>
 @endsection
