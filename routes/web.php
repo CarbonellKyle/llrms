@@ -5,6 +5,8 @@ use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LearningResourceController;
+use App\Http\Controllers\DownloadController;
+
 
 
 
@@ -49,9 +51,11 @@ Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher.index
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
 
 //LearningResourceController Routes
-Route::get('/learningresource', [LearningResourceController::class, 'index'])->name('learningresource.index');
+Route::get('/learningresource/index', [LearningResourceController::class, 'index'])->name('learningresource.index');
 Route::get('/learningresource/upload', [LearningResourceController::class, 'upload'])->name('learningresource.upload');
 Route::post('/learningresource/upload', [LearningResourceController::class, 'uploadSubmit'])->name('learningresource.uploadSubmit');
 
 
+//Download Routes
+Route::get('/download', [DownloadController::class, 'download'])->name('download');
 
