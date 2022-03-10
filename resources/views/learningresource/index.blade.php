@@ -9,9 +9,68 @@
         </svg>
     </button>
 
-    <div class="col-lg-12">
+    <div class="col-lg-12 container">
         <h2 class="text-center">Learning Resource</h2>
         <a href="{{ route('learningresource.upload') }}" class="btn btn-primary mt-4">Upload Files</a>
+
+        <h3 class="mt-4">Recent Uploaded Files</h3>
+        @if($numRows==0)
+            <div class="alert alert-warning" role="alert">
+                    {{'You haven\'t upload any files yet!'}}
+            </div>
+
+            @else
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-info">
+                        <th class="text-center">
+                            Filename
+                        </th>
+                        <th class="text-center">
+                            Grade Level
+                        </th>
+                        <th class="text-center">
+                            Subject
+                        </th>
+                        <th class="text-center">
+                            Description
+                        </th>
+                        <th class="text-center">
+                            Action
+                        </th>
+                    </thead>
+                    <tbody>
+                    @foreach ($files as $file)
+                        <tr>
+                            <td class="text-center">
+                                {{ $file->filename . '.' . $file->filetype}}
+                            </td>
+                            <td class="text-center">
+                                {{ $file->grade_level }}
+                            </td>
+                            <td class="text-center">
+                                {{ $file->subject_name }}
+                            </td>
+                            <td class="text-center">
+                                {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-sm btn-info" href="#">
+                                    View
+                                </a>
+                                <a class="btn btn-sm btn-warning" href="#">
+                                     Edit
+                                </a>
+                                <a class="btn btn-sm btn-danger" href="#">
+                                     Delete
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

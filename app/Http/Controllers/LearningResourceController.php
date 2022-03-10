@@ -20,7 +20,8 @@ class LearningResourceController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $uploadedfiles = DB::table('tb_learningresource')->where('uploadedbyid', $user_id)->get();
+        $files = DB::table('tb_learningresource')->where('uploadedbyid', $user_id)->get();
+        $numRows = count($files);
 
         //Get the position name from tb_positions using the position_id of the authenticated user
         $user_position = DB::table('users')
@@ -37,7 +38,7 @@ class LearningResourceController extends Controller
             $layout = 'layouts.app';
             $data = [];
         }
-        return view('learningresource.index', compact('layout', 'data', 'uploadedfiles'));
+        return view('learningresource.index', compact('layout', 'data', 'files', 'numRows'));
     }
 
     public function upload()
