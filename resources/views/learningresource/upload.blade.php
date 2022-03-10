@@ -10,7 +10,7 @@
     </button>
   	
     <div class="col-lg-12">
-        <a href="{{ route('learningresource.index') }}" class="text-decoration-none">Manage Resources</a>
+        <a href="{{ route('learningresource.index') }}" class="btn btn-primary mb-2">Manage Resources</a>
         <div class="card">
             <div class="card-header">
                 <h5 class="title m-0">{{ __('Upload Files') }}</h5>
