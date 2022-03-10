@@ -87,7 +87,7 @@ class LearningResourceController extends Controller
             $usertype = 'teachers';
         }
         
-        $request->file('file')->storeAs('/' . $usertype . '/' . auth()->user()->id, $fileOriginalName, 'uploads');
+        $request->file('file')->storeAs('/' . $usertype . '/' . auth()->user()->id, $fileOriginalName, 'learningresource');
         return back()->with('file_uploaded', 'File has been uploaded successfully!');
     }
 }

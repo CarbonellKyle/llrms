@@ -35,7 +35,7 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'uploads' => [
+        'learningresource' => [
             'driver' => 'local',
             'root' => public_path('learningresource'),
             'visibility' => 'public',

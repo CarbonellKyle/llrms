@@ -52,7 +52,10 @@
                                                 {{ $file->filedescription }}
                                             </td>
                                             <td class="text-center">
-                                                <a href="#">Download File</a>
+                                                <form method="GET" action="{{ route('download') }}">
+                                                    <input type="hidden" name="file_id" value="{{ $file->id }}" >
+                                                    <button>Download File</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

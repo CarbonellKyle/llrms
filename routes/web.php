@@ -5,6 +5,8 @@ use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LearningResourceController;
+use App\Http\Controllers\DownloadController;
+
 
 
 
@@ -54,4 +56,6 @@ Route::get('/learningresource/upload', [LearningResourceController::class, 'uplo
 Route::post('/learningresource/upload', [LearningResourceController::class, 'uploadSubmit'])->name('learningresource.uploadSubmit');
 
 
+//Download Routes
+Route::get('/download', [DownloadController::class, 'download'])->name('download');
 
