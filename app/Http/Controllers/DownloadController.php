@@ -21,7 +21,7 @@ class DownloadController extends Controller
     public function download(Request $request)
     {
         $file = DB::table('tb_learningresource')->where('id', $request->file_id)->first();
-        $fileOriginalName = $file->filename . '.' . $file->filetype;
+        $fileOriginalName = $file->grade_level . $file->filename . '.' . $file->filetype;
 
         $uploader = DB::table('users')->where('id', $file->uploadedbyid)->first();
         //To know uploader's user type

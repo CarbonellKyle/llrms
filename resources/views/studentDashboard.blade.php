@@ -1,22 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Student Dashboard') }}</div>
 
+<div class="site-grad">
+    <div class="site-grid">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">{{ __('Available Resources') }}</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <p>Welcome, <strong>{{ Auth::user()->username }}</strong>! You are Logged in as a <strong>Student</strong>!</p>
-
-                    <h2>Files</h2>
                         @if($numRows==0)
                             <div class="alert alert-warning" role="alert">
                                     {{'No files to download yet!'}}
@@ -31,6 +27,9 @@
                                         </th>
                                         <th class="text-center">
                                             Filetype
+                                        </th>
+                                        <th class="text-center">
+                                            FileSize
                                         </th>
                                         <th class="text-center">
                                             Description
@@ -49,6 +48,9 @@
                                                 {{ $file->filetype }}
                                             </td>
                                             <td class="text-center">
+                                                file size
+                                            </td>
+                                            <td class="text-center">
                                                 {{ $file->filedescription }}
                                             </td>
                                             <td class="text-center">
@@ -65,7 +67,8 @@
                         @endif
                 </div>
             </div>
-        </div>
     </div>
 </div>
+
+
 @endsection
