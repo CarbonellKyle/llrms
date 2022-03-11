@@ -64,9 +64,10 @@
                                             {{ $file->filedescription }}
                                         </td>
                                         <td class="text-center">
+                                            <a class="btn btn-sm btn-info mt-2" href="/student/resources/previewFile/{{ $file->id }}">Preview File</a>
                                             <form method="GET" action="{{ route('download') }}">
                                                 <input type="hidden" name="file_id" value="{{ $file->id }}" >
-                                                <button class="btn btn-primary">Download File</button>
+                                                <button class="btn btn-sm btn-primary">Download File</button>
                                             </form>
                                         </td>
                                     </tr>
