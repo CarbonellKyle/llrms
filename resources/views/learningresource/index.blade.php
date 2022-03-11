@@ -1,5 +1,8 @@
-@extends($layout, $data) 
-<!-- $layout is the layout file to extend, $data contains variables to be pass at the layout file from the controller -->
+@extends($layout, $data) <!-- $layout is the layout file to extend, $data contains variables to be pass at the layout file from the controller -->
+
+@section('css')
+    <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+@endsection
 
 @section('content')
 <div id="content" class="content-wrapper p-3">
@@ -9,20 +12,19 @@
         </svg>
     </button>
 
-    <div class="col-lg-12 container">
-        <h2 class="text-center">Learning Resource</h2>
-        <a href="{{ route('learningresource.upload') }}" class="btn btn-primary mt-4">Upload Files</a>
+    <div class="col-lg-12">
+        <h2 class="text-center">Learning Resources</h2>
+        <a href="{{ route('learningresource.upload') }}" class="btn btn-primary mb-4">Upload Files</a>
 
         @if(Session::has('delete_file'))
             <div class="alert alert-danger mt-4" role="alert">
                 {{Session::get('delete_file')}}
             </div>
         @endif
-
-        <h3 class="mt-4">Recent Uploaded Files</h3>
+        
         @if($numRows==0)
             <div class="alert alert-warning" role="alert">
-                    {{'You haven\'t upload any files yet!'}}
+                {{'You haven\'t upload any files yet!'}}
             </div>
 
             @else
@@ -80,3 +82,12 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#filesUploadedTable').DataTable();
+        } );
+    </script>
+@endpush

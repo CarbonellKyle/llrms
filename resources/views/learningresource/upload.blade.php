@@ -10,7 +10,8 @@
     </button>
   	
     <div class="col-lg-12">
-        <a href="{{ route('learningresource.index') }}" class="btn btn-primary mb-2">Manage Resources</a>
+        <h2 class="text-center">Upload Resources</h2>
+        <a href="{{ route('learningresource.index') }}" class="btn btn-primary mb-4">Manage Resources</a>
         
         @if(Session::has('file_uploaded'))
             <div class="alert alert-success mt-4" role="alert">
@@ -56,13 +57,13 @@
                 <!-- Subject Start -->
                 <div class="form-floating">
                     <select class="form-select" id="subject_name" name="subject_name">
-                        <option value="D1">Domain 1</option>
-                        <option value="D2">Domain 2</option>
-                        <option value="D3">Domain 3</option>
-                        <option value="D4">Domain 4</option>
-                        <option value="D5">Domain 5</option>
-                        <option value="D6">Domain 6</option>
-                        <option value="D7">Domain 7</option>
+                        <option value="DOMAIN-1">Domain 1</option>
+                        <option value="DOMAIN-2">Domain 2</option>
+                        <option value="DOMAIN-3">Domain 3</option>
+                        <option value="DOMAIN-4">Domain 4</option>
+                        <option value="DOMAIN-5">Domain 5</option>
+                        <option value="DOMAIN-6">Domain 6</option>
+                        <option value="DOMAIN-7">Domain 7</option>
                     </select>
                     <label for="subject_name">Subject</label>
                 </div>
@@ -82,13 +83,13 @@
         $('#grade_level').on('change', function(){
             $('#subject_name').html('');
             if ($('#grade_level').val() == 0){
-                $('#subject_name').append('<option value="D1">Domain 1</option>');
-                $('#subject_name').append('<option value="D2">Domain 2</option>');
-                $('#subject_name').append('<option value="D3">Domain 3</option>');
-                $('#subject_name').append('<option value="D4">Domain 4</option>');
-                $('#subject_name').append('<option value="D5">Domain 5</option>');
-                $('#subject_name').append('<option value="D6">Domain 6</option>');
-                $('#subject_name').append('<option value="D7">Domain 7</option>');
+                $('#subject_name').append('<option value="DOMAIN-1">Domain 1</option>');
+                $('#subject_name').append('<option value="DOMAIN-2">Domain 2</option>');
+                $('#subject_name').append('<option value="DOMAIN-3">Domain 3</option>');
+                $('#subject_name').append('<option value="DOMAIN-4">Domain 4</option>');
+                $('#subject_name').append('<option value="DOMAIN-5">Domain 5</option>');
+                $('#subject_name').append('<option value="DOMAIN-6">Domain 6</option>');
+                $('#subject_name').append('<option value="DOMAIN-7">Domain 7</option>');
             }
             if ($('#grade_level').val() == 1){
                 $('#subject_name').append('<option value="MTB">MTB</option>');
