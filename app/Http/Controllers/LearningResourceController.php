@@ -119,4 +119,24 @@ class LearningResourceController extends Controller
 
         return back()->with('delete_file', 'File has been deleted!');
     }
+
+    public function viewFile($id)
+    {
+        $user_position = DB::table('users')
+        ->join('tb_positions', 'users.position_id', 'tb_positions.id') //To get officename at tb_office
+        ->select('users.*', 'tb_positions.name')
+        ->where('users.id', auth()->user()->id)->first();
+
+        //Determines which layout file to extend base on user type
+        if(auth()->user()->group_id==1) {
+            //If user is a personnel
+            $layout = 'layouts.personnelLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav
+        } else {
+            $layout = 'layouts.app';
+            $data = [];
+        }
+
+        return view('learningresource.view', compact('layout', 'data'));
+    }
 }

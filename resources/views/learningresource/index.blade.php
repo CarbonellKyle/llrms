@@ -61,7 +61,7 @@
                                 {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-sm btn-info" href="#">
+                                <a class="btn btn-sm btn-info" href="/learningresource/viewFile/{{ $file->id }}">
                                     View
                                 </a>
                                 <a class="btn btn-sm btn-warning" href="#">
