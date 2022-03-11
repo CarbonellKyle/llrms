@@ -167,4 +167,24 @@ class LearningResourceController extends Controller
         $filepath = $path;
         return view('learningresource.view', compact('layout', 'data', 'file', 'filepath'));
     }
+
+    public function openFile($id)
+    {
+        //fetching the file to be viewed
+        $file = DB::table('tb_learningresource')->where('id', $id)->first();
+        $filename = $file->filename;
+        $fileOriginalName = $filename . '.' . $file->filetype;
+
+        $uploader = DB::table('users')->where('id', $file->uploadedbyid)->first();
+        //To know uploader's user type
+        if($uploader->group_id==1){
+            $usertype = 'personnels';
+        }else{
+            $usertype = 'teachers';
+        }
+
+        $path = $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
+
+        return Storage::disk('learningresource')->response($path);
+    }
 }

@@ -22,8 +22,10 @@
                     {{ session('status') }}
                 </div>
             @endif
+            <!--<a href="/learningresource/openFile/{{ $file->id }}"></a>-->
 
             <img style="height: auto; width: 150px;" src="{{ url($filepath) }}"/><br>
+
             <div class="mt-4">
                 <div class="form-group">
                     <strong class="">Filename:</strong>
