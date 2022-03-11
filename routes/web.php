@@ -55,6 +55,9 @@ Route::get('/learningresource/upload', [LearningResourceController::class, 'uplo
 Route::post('/learningresource/upload', [LearningResourceController::class, 'uploadSubmit'])->name('learningresource.uploadSubmit');
 Route::get('/learningresource/deleteFile/{id}', [LearningResourceController::class, 'deleteFile'])->name('learningresource.deleteFile');
 Route::get('/learningresource/viewFile/{id}', [LearningResourceController::class, 'viewFile'])->name('learningresource.viewFile');
+Route::get('/learningresource/openFile/{id}', [LearningResourceController::class, 'openFile'])->name('learningresource.openFile');
+Route::get('/learningresource/editFile/{id}', [LearningResourceController::class, 'editFile'])->name('learningresource.editFile');
+Route::post('/learningresource/updateFile', [LearningResourceController::class, 'updateFile'])->name('learningresource.updateFile');
 
 //StudentController Routes
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');

@@ -28,59 +28,55 @@
             </div>
 
             @else
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table" id="filesUploadedTable">
-                            <thead>
-                                <th class="text-center">
-                                    Filename
-                                </th>
-                                <th class="text-center">
-                                    Grade Level
-                                </th>
-                                <th class="text-center">
-                                    Subject
-                                </th>
-                                <th class="text-center">
-                                    Description
-                                </th>
-                                <th class="text-center">
-                                    Action
-                                </th>
-                            </thead>
-                            <tbody>
-                            @foreach ($files as $file)
-                                <tr>
-                                    <td class="text-center">
-                                        {{ $file->filename . '.' . $file->filetype}}
-                                    </td>
-                                    <td class="text-center">
-                                        {{ $file->grade_level }}
-                                    </td>
-                                    <td class="text-center">
-                                        {{ $file->subject_name }}
-                                    </td>
-                                    <td class="text-center">
-                                        {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
-                                    </td>
-                                    <td class="text-center">
-                                        <a class="btn btn-sm btn-primary" href="/learningresource/viewFile/{{ $file->id }}">
-                                            View
-                                        </a>
-                                        <a class="btn btn-sm btn-warning" href="#">
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-sm btn-danger" href="/learningresource/deleteFile/{{ $file->id }}">
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-info">
+                        <th class="text-center">
+                            Filename
+                        </th>
+                        <th class="text-center">
+                            Grade Level
+                        </th>
+                        <th class="text-center">
+                            Subject
+                        </th>
+                        <th class="text-center">
+                            Description
+                        </th>
+                        <th class="text-center">
+                            Action
+                        </th>
+                    </thead>
+                    <tbody>
+                    @foreach ($files as $file)
+                        <tr>
+                            <td class="text-center">
+                                {{ $file->filename . '.' . $file->filetype}}
+                            </td>
+                            <td class="text-center">
+                                {{ $file->grade_level }}
+                            </td>
+                            <td class="text-center">
+                                {{ $file->subject_name }}
+                            </td>
+                            <td class="text-center">
+                                {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-sm btn-info" href="/learningresource/viewFile/{{ $file->id }}">
+                                    View
+                                </a>
+                                <a class="btn btn-sm btn-warning" href="/learningresource/editFile/{{ $file->id }}">
+                                     Edit
+                                </a>
+                                <a class="btn btn-sm btn-danger" href="/learningresource/deleteFile/{{ $file->id }}">
+                                     Delete
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         @endif
     </div>
