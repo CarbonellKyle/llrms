@@ -16,7 +16,7 @@
                 </div>
 			</div>
 			<div class="col-lg-6">
-				<!-- Shops -->
+				<!-- No of Teachers -->
 				<div class="box-body">
 					<div class="box-image">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<!-- Earned-->
+				<!-- No of Students-->
 				<div class="box-body">
 					<div class="box-image">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">

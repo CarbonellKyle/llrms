@@ -33,6 +33,11 @@ class ProfileController extends Controller
             //If user is a personnel
             $layout = 'layouts.personnelLayout';
             $data = ['position' => $user_position->name]; //User position at sidenav
+        }
+        if(auth()->user()->group_id==2) {
+            //If user is a teacher
+            $layout = 'layouts.teacherLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav
         } else {
             $layout = 'layouts.app';
             $data = [];
