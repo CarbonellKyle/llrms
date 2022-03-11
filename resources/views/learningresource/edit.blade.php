@@ -12,9 +12,9 @@
     <div class="col-lg-12">
         <a href="{{ route('learningresource.index') }}" class="btn btn-primary mb-2">Manage Resources</a>
         
-        @if(Session::has('file_uploaded'))
+        @if(Session::has('file_updated'))
             <div class="alert alert-success mt-4" role="alert">
-                {{Session::get('file_uploaded')}}
+                {{Session::get('file_updated')}}
             </div>
         @endif
 
@@ -34,6 +34,9 @@
                 <img style="height: auto; width: 150px;" src="{{ url($filepath) }}"/><br>
                 <a class="btn btn-info mt-2" href="/learningresource/openFile/{{ $file->id }}">Open File</a>
                 <!-- Input File End -->
+
+                <br>
+                <input type="text" class="form-floating my-2" name="filename" value="{{ $file->filename }}" placeholder="Filename">
 
                 <!-- Grade Level Select Start -->
                 <div class="form-floating my-2">
@@ -75,7 +78,7 @@
                 <textarea name="filedescription" id="file_desciption" class="form-control my-2" style="height: 100px; resize: none;" placeholder="Description">{{ $file->filedescription }}</textarea>
                 <!-- File Description End -->
 
-                <button class="btn btn-primary w-100" type="submit">Upload</button>
+                <button class="btn btn-primary w-100" type="submit">Update</button>
             </form>
         </div>
         </div>

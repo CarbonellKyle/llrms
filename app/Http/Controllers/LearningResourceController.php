@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
 class LearningResourceController extends Controller
 {
@@ -236,8 +237,40 @@ class LearningResourceController extends Controller
         return view('learningresource.edit', compact('layout', 'data', 'file', 'filepath'));
     }
 
-    public function updateFile()
+    public function updateFile(Request $request)
     {
-        return 'Developer is currently working on this function';
+        $validatedData = $request->validate([
+            'filename' => 'required',
+            'grade_level' => 'required|numeric|min:1|max:12',
+            'subject_name' => 'required',
+        ]);
+
+        //rename the file on the directory
+        $file = DB::table('tb_learningresource')->where('id', $request->id)->first();
+        $old_name = $file->filename . '.' . $file->filetype;
+        $new_name = $request->filename. '.' . $file->filetype;
+
+        $uploader = DB::table('users')->where('id', $file->uploadedbyid)->first();
+        //To know uploader's user type
+        if($uploader->group_id==1){
+            $usertype = 'personnels';
+        }else{
+            $usertype = 'teachers';
+        }
+
+        $path = $usertype . '/' . $uploader->id;
+
+        Storage::disk('learningresource')->move($path . '/' . $old_name, $path . '/' . $new_name);
+
+        //Update on database
+        DB::table('tb_learningresource')->where('id', $request->id)->update([
+            'grade_level' => $request->grade_level,
+            'subject_name' => $request->subject_name,
+            'filename' => $request->filename,
+            'filedescription' => $request->filedescription,
+            'updated_at' => Carbon::now()
+        ]);
+        
+        return back()->with('file_updated', 'File has been updated successfully!');
     }
 }
