@@ -21,7 +21,8 @@ class DownloadController extends Controller
     public function download(Request $request)
     {
         $file = DB::table('tb_learningresource')->where('id', $request->file_id)->first();
-        $fileOriginalName = $file->grade_level . $file->filename . '.' . $file->filetype;
+        $filename = $file->filename;
+        $fileOriginalName = $filename . '.' . $file->filetype;
 
         $uploader = DB::table('users')->where('id', $file->uploadedbyid)->first();
         //To know uploader's user type
@@ -37,5 +38,25 @@ class DownloadController extends Controller
             return Storage::disk('learningresource')->download($path);
         }
         return redirect('/404');
+    }
+
+    public function previewFile($id)
+    {
+        //fetching the file to be viewed
+        $file = DB::table('tb_learningresource')->where('id', $id)->first();
+        $filename = $file->filename;
+        $fileOriginalName = $filename . '.' . $file->filetype;
+
+        $uploader = DB::table('users')->where('id', $file->uploadedbyid)->first();
+        //To know uploader's user type
+        if($uploader->group_id==1){
+            $usertype = 'personnels';
+        }else{
+            $usertype = 'teachers';
+        }
+
+        $path = $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
+
+        return Storage::disk('learningresource')->response($path);
     }
 }

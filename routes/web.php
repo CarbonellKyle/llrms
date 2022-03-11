@@ -65,4 +65,5 @@ Route::get('/student/resources', [StudentController::class, 'getResources'])->na
 
 //Download Routes
 Route::get('/download', [DownloadController::class, 'download'])->name('download');
+Route::get('/student/resources/previewFile/{id}', [DownloadController::class, 'previewFile'])->name('previewFile');
 
