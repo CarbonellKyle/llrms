@@ -36,6 +36,9 @@
                                         FileSize
                                     </th>
                                     <th class="text-center">
+                                        Subject
+                                    </th>
+                                    <th class="text-center">
                                         Description
                                     </th>
                                     <th class="text-center">
@@ -53,6 +56,9 @@
                                         </td>
                                         <td class="text-center">
                                             file size
+                                        </td>
+                                        <td class="text-center">
+                                            {{ $file->subject_name }}
                                         </td>
                                         <td class="text-center">
                                             {{ $file->filedescription }}
