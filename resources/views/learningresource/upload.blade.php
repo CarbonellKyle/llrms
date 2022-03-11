@@ -80,6 +80,9 @@
     </div>
 
     <script>
+         $(document).ready(function(e) {   
+            alert('asdasd');
+        });
         $('#grade_level').on('change', function(){
             $('#subject_name').html('');
             if ($('#grade_level').val() == 0){
