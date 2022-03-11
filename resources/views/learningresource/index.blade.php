@@ -13,6 +13,12 @@
         <h2 class="text-center">Learning Resource</h2>
         <a href="{{ route('learningresource.upload') }}" class="btn btn-primary mt-4">Upload Files</a>
 
+        @if(Session::has('delete_file'))
+            <div class="alert alert-danger mt-4" role="alert">
+                {{Session::get('delete_file')}}
+            </div>
+        @endif
+
         <h3 class="mt-4">Recent Uploaded Files</h3>
         @if($numRows==0)
             <div class="alert alert-warning" role="alert">
@@ -61,7 +67,7 @@
                                 <a class="btn btn-sm btn-warning" href="#">
                                      Edit
                                 </a>
-                                <a class="btn btn-sm btn-danger" href="#">
+                                <a class="btn btn-sm btn-danger" href="/learningresource/deleteFile/{{ $file->id }}">
                                      Delete
                                 </a>
                             </td>
