@@ -187,4 +187,57 @@ class LearningResourceController extends Controller
 
         return Storage::disk('learningresource')->response($path);
     }
+
+    public function editFile($id)
+    {
+        //Get the position name from tb_positions using the position_id of the authenticated user
+        $user_position = DB::table('users')
+        ->join('tb_positions', 'users.position_id', 'tb_positions.id')
+        ->select('tb_positions.name')
+        ->where('users.id', auth()->user()->id)->first();
+
+        //Determines which layout file to extend base on user type
+        if(auth()->user()->group_id==1) {
+            //If user is a personnel
+            $layout = 'layouts.personnelLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav
+        } else {
+            $layout = 'layouts.teacherLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav$layout = 'layouts.app';
+        }
+
+        //filetypes
+        $image = ['jpg', 'jpeg', 'jfif', 'png', 'gif'];
+        $document = ['doc', 'docx', 'pdf', 'ppt'];
+
+        //Getting learningresource info from data base
+        $file = DB::table('tb_learningresource')->where('id', $id)->first();
+        $filename = $file->filename;
+        $fileOriginalName = $filename . '.' . $file->filetype;
+
+        $uploader = DB::table('users')->where('id', $file->uploadedbyid)->first();
+        //To know uploader's user type
+        if($uploader->group_id==1){
+            $usertype = 'personnels';
+        }else{
+            $usertype = 'teachers';
+        }
+
+        $path = '/learningresource' . '/' . $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
+
+        //if file is not an image
+        if(! in_array($file->filetype, $image)){
+            $filepath = "../../images/docThumnail.jpg";
+            return view('learningresource.edit', compact('layout', 'data', 'file', 'filepath'));
+        }
+        
+        //images as default file
+        $filepath = $path;
+        return view('learningresource.edit', compact('layout', 'data', 'file', 'filepath'));
+    }
+
+    public function updateFile()
+    {
+        return 'Developer is currently working on this function';
+    }
 }

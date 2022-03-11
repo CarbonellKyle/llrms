@@ -64,7 +64,7 @@
                                 <a class="btn btn-sm btn-info" href="/learningresource/viewFile/{{ $file->id }}">
                                     View
                                 </a>
-                                <a class="btn btn-sm btn-warning" href="#">
+                                <a class="btn btn-sm btn-warning" href="/learningresource/editFile/{{ $file->id }}">
                                      Edit
                                 </a>
                                 <a class="btn btn-sm btn-danger" href="/learningresource/deleteFile/{{ $file->id }}">
