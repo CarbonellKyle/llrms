@@ -11,7 +11,42 @@
 
     <div class="col-lg-12 container">
         <h2 class="text-center">Learning Resource</h2>
+
+        <a class="btn btn-primary" href="{{ route('learningresource.index') }}">Back</a>
+        
         <h3 class="mt-4">View File</h3>
+
+        <div class="card-body">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            <img style="height: auto; width: 150px;" src="{{ url($filepath) }}"/><br>
+            <div class="mt-4">
+                <div class="form-group">
+                    <strong class="">Filename:</strong>
+                        {{ $file->filename }}
+                </div>
+                <div class="form-group">
+                    <strong class="">Filetype:</strong>
+                        {{ $file->filetype }}
+                </div>
+                <div class="form-group">
+                    <strong class="">For:</strong>
+                        {{ 'Grade ' . $file->grade_level . ' Students' }}
+                </div>
+                <div class="form-group">
+                    <strong class="">Subject:</strong>
+                        {{ $file->subject_name }}
+                </div>
+                <div class="form-group">
+                    <strong class="">Description:</strong>
+                        {{ $file->filedescription }}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

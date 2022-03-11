@@ -122,8 +122,9 @@ class LearningResourceController extends Controller
 
     public function viewFile($id)
     {
+        //Getting user position
         $user_position = DB::table('users')
-        ->join('tb_positions', 'users.position_id', 'tb_positions.id') //To get officename at tb_office
+        ->join('tb_positions', 'users.position_id', 'tb_positions.id') //To get position name at tb_position
         ->select('users.*', 'tb_positions.name')
         ->where('users.id', auth()->user()->id)->first();
 
@@ -137,6 +138,33 @@ class LearningResourceController extends Controller
             $data = ['position' => $user_position->name]; //User position at sidenav
         }
 
-        return view('learningresource.view', compact('layout', 'data'));
+        //filetypes
+        $image = ['jpg', 'jpeg', 'jfif', 'png', 'gif'];
+        $document = ['doc', 'docx', 'pdf', 'ppt'];
+
+        //fetching the file to be viewed
+        $file = DB::table('tb_learningresource')->where('id', $id)->first();
+        $filename = $file->filename;
+        $fileOriginalName = $filename . '.' . $file->filetype;
+
+        $uploader = DB::table('users')->where('id', $file->uploadedbyid)->first();
+        //To know uploader's user type
+        if($uploader->group_id==1){
+            $usertype = 'personnels';
+        }else{
+            $usertype = 'teachers';
+        }
+
+        $path = '/learningresource' . '/' . $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
+
+        //if file is not an image
+        if(! in_array($file->filetype, $image)){
+            $filepath = "../../images/docThumnail.jpg";
+            return view('learningresource.view', compact('layout', 'data', 'file', 'filepath'));
+        }
+        
+        //images as default file
+        $filepath = $path;
+        return view('learningresource.view', compact('layout', 'data', 'file', 'filepath'));
     }
 }
