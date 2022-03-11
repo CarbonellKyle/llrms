@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class LearningResourceController extends Controller
 {
@@ -90,5 +91,52 @@ class LearningResourceController extends Controller
         
         $request->file('file')->storeAs('/' . $usertype . '/' . auth()->user()->id, $fileOriginalName, 'learningresource');
         return back()->with('file_uploaded', 'File has been uploaded successfully!');
+    }
+
+    public function deleteFile($id)
+    {
+        $file = DB::table('tb_learningresource')->where('id', $id)->first();
+        $filename = $file->filename;
+        $fileOriginalName = $filename . '.' . $file->filetype;
+
+        $uploader = DB::table('users')->where('id', $file->uploadedbyid)->first();
+        //To know uploader's user type
+        if($uploader->group_id==1){
+            $usertype = 'personnels';
+        }else{
+            $usertype = 'teachers';
+        }
+
+        $path = $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
+
+        if(Storage::disk('learningresource')->exists($path)){
+            Storage::disk('learningresource')->delete($path);
+        } else {
+            return 'Not Found';
+        }
+
+        DB::table('tb_learningresource')->where('id', $id)->delete();
+
+        return back()->with('delete_file', 'File has been deleted!');
+    }
+
+    public function viewFile($id)
+    {
+        $user_position = DB::table('users')
+        ->join('tb_positions', 'users.position_id', 'tb_positions.id') //To get officename at tb_office
+        ->select('users.*', 'tb_positions.name')
+        ->where('users.id', auth()->user()->id)->first();
+
+        //Determines which layout file to extend base on user type
+        if(auth()->user()->group_id==1) {
+            //If user is a personnel
+            $layout = 'layouts.personnelLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav
+        } else {
+            $layout = 'layouts.app';
+            $data = [];
+        }
+
+        return view('learningresource.view', compact('layout', 'data'));
     }
 }

@@ -11,6 +11,13 @@
   	
     <div class="col-lg-12">
         <a href="{{ route('learningresource.index') }}" class="btn btn-primary mb-2">Manage Resources</a>
+        
+        @if(Session::has('file_uploaded'))
+            <div class="alert alert-success mt-4" role="alert">
+                {{Session::get('file_uploaded')}}
+            </div>
+        @endif
+
         <div class="card">
             <div class="card-header">
                 <h5 class="title m-0">{{ __('Upload Files') }}</h5>
