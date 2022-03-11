@@ -1,4 +1,4 @@
-@extends('layouts.personnelLayout', ['position' => $position])
+@extends('layouts.personnelLayout')
 
 @section('content')
 <div id="content" class="content-wrapper p-3">

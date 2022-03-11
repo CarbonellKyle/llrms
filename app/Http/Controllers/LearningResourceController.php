@@ -36,8 +36,8 @@ class LearningResourceController extends Controller
             $layout = 'layouts.personnelLayout';
             $data = ['position' => $user_position->name]; //User position at sidenav
         } else {
-            $layout = 'layouts.app';
-            $data = [];
+            $layout = 'layouts.teacherLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav$layout = 'layouts.app';
         }
         return view('learningresource.index', compact('layout', 'data', 'files', 'numRows'));
     }
@@ -56,8 +56,8 @@ class LearningResourceController extends Controller
             $layout = 'layouts.personnelLayout';
             $data = ['position' => $user_position->name]; //User position at sidenav
         } else {
-            $layout = 'layouts.app';
-            $data = [];
+            $layout = 'layouts.teacherLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav$layout = 'layouts.app';
         }
         return view('learningresource.upload', compact('layout', 'data'));
     }
@@ -133,8 +133,8 @@ class LearningResourceController extends Controller
             $layout = 'layouts.personnelLayout';
             $data = ['position' => $user_position->name]; //User position at sidenav
         } else {
-            $layout = 'layouts.app';
-            $data = [];
+            $layout = 'layouts.teacherLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav
         }
 
         return view('learningresource.view', compact('layout', 'data'));

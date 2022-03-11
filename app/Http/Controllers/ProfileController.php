@@ -39,8 +39,8 @@ class ProfileController extends Controller
             $layout = 'layouts.teacherLayout';
             $data = ['position' => $user_position->name]; //User position at sidenav
         } else {
-            $layout = 'layouts.app';
-            $data = [];
+            $layout = 'layouts.teacherLayout';
+            $data = ['position' => $user_position->name]; //User position at sidenav
         }
 
         return view('profile.edit', compact('layout', 'data', 'offices', 'user_office', 'positions', 'user_position'));
