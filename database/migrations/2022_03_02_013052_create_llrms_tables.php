@@ -64,6 +64,7 @@ class CreateLlrmsTables extends Migration
             $table->string('subject_name', 50);
             $table->string('filename', 30);
             $table->string('filetype', 30);
+            $table->string('filesize', 20);
             $table->string('filedescription', 100)->nullable();
             $table->timestamps();
         });

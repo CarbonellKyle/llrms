@@ -74,6 +74,8 @@ class LearningResourceController extends Controller
         $fileOriginalName = $request->file('file')->getClientOriginalName();
         $filename = pathinfo($fileOriginalName, PATHINFO_FILENAME);
         $filetype = $request->file('file')->getClientOriginalExtension();
+        $rawfilesize = $request->file('file')->getSize();
+        $filesize = $this->formatSizeUnits($rawfilesize);
 
         DB::table('tb_learningresource')->insert([
             'uploadedbyid' => $request->uploadedbyid,
@@ -81,6 +83,7 @@ class LearningResourceController extends Controller
             'subject_name' => $request->subject_name,
             'filename' => $filename,
             'filetype' => $filetype,
+            'filesize' => $filesize,
             'filedescription' => $request->filedescription
         ]);
 
@@ -272,5 +275,35 @@ class LearningResourceController extends Controller
         ]);
         
         return back()->with('file_updated', 'File has been updated successfully!');
+    }
+
+    public function formatSizeUnits($bytes)
+    {
+        if ($bytes >= 1073741824)
+        {
+            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+        }
+        elseif ($bytes >= 1048576)
+        {
+            $bytes = number_format($bytes / 1048576, 2) . ' MB';
+        }
+        elseif ($bytes >= 1024)
+        {
+            $bytes = number_format($bytes / 1024, 2) . ' KB';
+        }
+        elseif ($bytes > 1)
+        {
+            $bytes = $bytes . ' bytes';
+        }
+        elseif ($bytes == 1)
+        {
+            $bytes = $bytes . ' byte';
+        }
+        else
+        {
+            $bytes = '0 bytes';
+        }
+
+        return $bytes;
     }
 }

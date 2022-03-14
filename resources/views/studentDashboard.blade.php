@@ -39,6 +39,9 @@
                                         Subject
                                     </th>
                                     <th class="text-center">
+                                        Uploaded By
+                                    </th>
+                                    <th class="text-center">
                                         Description
                                     </th>
                                     <th class="text-center">
@@ -55,13 +58,16 @@
                                             {{ $file->filetype }}
                                         </td>
                                         <td class="text-center">
-                                            file size
+                                            {{ $file->filesize }}
                                         </td>
                                         <td class="text-center">
                                             {{ $file->subject_name }}
                                         </td>
                                         <td class="text-center">
-                                            {{ $file->filedescription }}
+                                            {{ $file->first_name . ' ' . $file->last_name }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
                                         </td>
                                         <td class="text-center">
                                             <a class="btn btn-sm btn-info mb-1 w-100" href="/student/resources/previewFile/{{ $file->id }}">Preview File</a>

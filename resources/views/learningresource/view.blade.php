@@ -36,6 +36,10 @@
                         {{ $file->filetype }}
                 </div>
                 <div class="form-group">
+                    <strong class="">Filesize:</strong>
+                        {{ $file->filesize }}
+                </div>
+                <div class="form-group">
                     <strong class="">For:</strong>
                         {{ 'Grade ' . $file->grade_level . ' Students' }}
                 </div>
