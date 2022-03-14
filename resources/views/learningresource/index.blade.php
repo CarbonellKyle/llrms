@@ -1,7 +1,7 @@
 @extends($layout, $data) <!-- $layout is the layout file to extend, $data contains variables to be pass at the layout file from the controller -->
 
 @section('css')
-    <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    
 @endsection
 
 @section('content')
@@ -29,7 +29,7 @@
 
             @else
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="filesUploadedTable">
                     <thead class=" text-info">
                         <th class="text-center">
                             Filename
@@ -90,7 +90,6 @@
 @endsection
 
 @push('scripts')
-    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready( function () {
             $('#filesUploadedTable').DataTable();

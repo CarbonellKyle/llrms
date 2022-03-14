@@ -10,46 +10,43 @@
     </button>
 
     <div class="col-lg-12 container">
-        <h2 class="text-center">Learning Resource</h2>
+        <h2 class="text-center">View File</h2>
 
         <a class="btn btn-primary" href="{{ route('learningresource.index') }}">Back</a>
         
-        <h3 class="mt-4">View File</h3>
 
-        <div class="card-body">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-
-            <img style="height: auto; width: 150px;" src="{{ url($filepath) }}"/><br>
-            <a class="btn btn-info mt-2" href="/learningresource/openFile/{{ $file->id }}">Open File</a>
-
-            <div class="mt-4">
-                <div class="form-group">
-                    <strong class="">Filename:</strong>
-                        {{ $file->filename }}
-                </div>
-                <div class="form-group">
-                    <strong class="">Filetype:</strong>
-                        {{ $file->filetype }}
-                </div>
-                <div class="form-group">
-                    <strong class="">Filesize:</strong>
-                        {{ $file->filesize }}
-                </div>
-                <div class="form-group">
-                    <strong class="">For:</strong>
-                        {{ 'Grade ' . $file->grade_level . ' Students' }}
-                </div>
-                <div class="form-group">
-                    <strong class="">Subject:</strong>
-                        {{ $file->subject_name }}
-                </div>
-                <div class="form-group">
-                    <strong class="">Description:</strong>
-                        {{ $file->filedescription }}
+        <div class="row">
+            <div class="col-lg-6 d-flex justify-content-center">
+                <img src="{{ url($filepath) }}" class="img-fluid"/>
+            </div>
+            <div class="col-lg-6">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <strong class="">Filename:</strong> {{ $file->filename }}
+                        </div>
+                        <div class="form-group">
+                            <strong class="">Filetype:</strong> {{ $file->filetype }}
+                        </div>
+                        <div class="form-group">
+                            <strong class="">Filesize:</strong> {{ $file->filesize }}
+                        </div>
+                        <div class="form-group">
+                            <strong class="">For:</strong> {{ 'Grade ' . $file->grade_level . ' Students' }}
+                        </div>
+                        <div class="form-group">
+                            <strong class="">Subject:</strong> {{ $file->subject_name }}
+                        </div>
+                        <div class="form-group">
+                            <strong class="">Description:</strong> {{ $file->filedescription }}
+                        </div>
+                        <a class="btn btn-info mt-2 w-100" href="/learningresource/openFile/{{ $file->id }}">Open File</a>
+                    </div>
                 </div>
             </div>
         </div>
