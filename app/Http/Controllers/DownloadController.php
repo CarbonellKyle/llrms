@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
 class DownloadController extends Controller
 {
@@ -35,6 +36,14 @@ class DownloadController extends Controller
         $path = $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
 
         if(Storage::disk('learningresource')->exists($path)){
+            //Store Download info to Database
+            DB::table('tb_downloadedfile')->insert([
+                'resource_id' => $request->file_id,
+                'downloadedbyid' => auth()->user()->id,
+                'created_at' => Carbon::now()
+            ]);
+            
+            //Download File
             return Storage::disk('learningresource')->download($path);
         }
         return redirect('/404');
