@@ -39,6 +39,9 @@
                                         Subject
                                     </th>
                                     <th class="text-center">
+                                        Uploaded By
+                                    </th>
+                                    <th class="text-center">
                                         Description
                                     </th>
                                     <th class="text-center">
@@ -59,6 +62,9 @@
                                         </td>
                                         <td class="text-center">
                                             {{ $file->subject_name }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{ $file->first_name . ' ' . $file->last_name }}
                                         </td>
                                         <td class="text-center">
                                             {{ $file->filedescription }}
