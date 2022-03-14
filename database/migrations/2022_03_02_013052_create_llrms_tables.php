@@ -33,6 +33,8 @@ class CreateLlrmsTables extends Migration
             $table->increments('id');
             $table->string('name', 50);
             $table->string('code', 30);
+            $table->integer('group_id')->unsigned()->nullable();
+            $table->foreign('group_id')->references('id')->on('tb_groups')->onUpdate('cascade')->onDelete('set null');
             $table->string('description', 100)->nullable();
             $table->timestamps();
         });
