@@ -264,7 +264,9 @@ class LearningResourceController extends Controller
 
         $path = $usertype . '/' . $uploader->id;
 
-        Storage::disk('learningresource')->move($path . '/' . $old_name, $path . '/' . $new_name);
+        if($new_name!=$old_name){
+            Storage::disk('learningresource')->move($path . '/' . $old_name, $path . '/' . $new_name);
+        }
 
         //Update on database
         DB::table('tb_learningresource')->where('id', $request->id)->update([
