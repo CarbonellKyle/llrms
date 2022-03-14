@@ -1,9 +1,0 @@
-Accounts
-
-Appworks Studio (GMAIL)
-username: appworkstudio@gmail.com
-password: Admin107
-
-Appworks Studio (Twitter)
-username: appworkstudio@gmail.com
-password: Admin107

@@ -35,6 +35,9 @@
                             Filename
                         </th>
                         <th class="text-center">
+                            Filesize
+                        </th>
+                        <th class="text-center">
                             Grade Level
                         </th>
                         <th class="text-center">
@@ -52,6 +55,9 @@
                         <tr>
                             <td class="text-center">
                                 {{ $file->filename . '.' . $file->filetype}}
+                            </td>
+                            <td class="text-center">
+                                {{ $file->filesize }}
                             </td>
                             <td class="text-center">
                                 {{ $file->grade_level }}
