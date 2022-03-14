@@ -82,7 +82,7 @@ class RegisterController extends Controller
 
         //Entities from each table to use for select options
         $groups = DB::table('tb_groups')->get();
-        $offices = DB::table('tb_office')->get();
+        $offices = DB::table('tb_office')->orderBy('officename', 'ASC')->get();
         $positions = DB::table('tb_positions')->get();
 
         //redirect to continue registration page with data above
