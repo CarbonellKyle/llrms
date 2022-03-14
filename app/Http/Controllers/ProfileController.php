@@ -39,7 +39,7 @@ class ProfileController extends Controller
             $layout = 'layouts.teacherLayout';
             $data = ['position' => $user_position->name]; //User position at sidenav
         } else {
-            $layout = 'layouts.teacherLayout';
+            $layout = 'layouts.app';
             $data = ['position' => $user_position->name]; //User position at sidenav
         }
 
