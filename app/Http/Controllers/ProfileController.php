@@ -22,7 +22,7 @@ class ProfileController extends Controller
         ->select('users.*', 'tb_office.officename')
         ->where('users.id', auth()->user()->id)->first();
 
-        $positions = DB::table('tb_positions')->get();
+        $positions = DB::table('tb_positions')->where('group_id', auth()->user()->group_id)->get();
         $user_position = DB::table('users')
         ->join('tb_positions', 'users.position_id', 'tb_positions.id') //To get officename at tb_office
         ->select('users.*', 'tb_positions.name')
