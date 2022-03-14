@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        $offices = DB::table('tb_office')->get();
+        $offices = DB::table('tb_office')->orderBy('officename', 'ASC')->get();
         $user_office = DB::table('users')
         ->join('tb_office', 'users.office_id', 'tb_office.id') //To get officename at tb_office
         ->select('users.*', 'tb_office.officename')
