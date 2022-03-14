@@ -79,136 +79,136 @@
         </div>
     </div>
 
-    <script>
-         $(document).ready(function(e) {   
-            alert('asdasd');
-        });
-        $('#grade_level').on('change', function(){
-            $('#subject_name').html('');
-            if ($('#grade_level').val() == 0){
-                $('#subject_name').append('<option value="DOMAIN-1">Domain 1</option>');
-                $('#subject_name').append('<option value="DOMAIN-2">Domain 2</option>');
-                $('#subject_name').append('<option value="DOMAIN-3">Domain 3</option>');
-                $('#subject_name').append('<option value="DOMAIN-4">Domain 4</option>');
-                $('#subject_name').append('<option value="DOMAIN-5">Domain 5</option>');
-                $('#subject_name').append('<option value="DOMAIN-6">Domain 6</option>');
-                $('#subject_name').append('<option value="DOMAIN-7">Domain 7</option>');
-            }
-            if ($('#grade_level').val() == 1){
-                $('#subject_name').append('<option value="MTB">MTB</option>');
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-            }
-            if ($('#grade_level').val() == 2){
-                $('#subject_name').append('<option value="MTB">MTB</option>');
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-            }
-            if ($('#grade_level').val() == 3){
-                $('#subject_name').append('<option value="MTB">MTB</option>');
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-                $('#subject_name').append('<option value="SCIENCE">Science</option>');
-            }
-            if ($('#grade_level').val() == 4){
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-                $('#subject_name').append('<option value="SCIENCE">Science</option>');
-                $('#subject_name').append('<option value="EPP">EPP</option>');
-            }
-            if ($('#grade_level').val() == 5){
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-                $('#subject_name').append('<option value="SCIENCE">Science</option>');
-                $('#subject_name').append('<option value="EPP">EPP</option>');
-            }
-            if ($('#grade_level').val() == 6){
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-                $('#subject_name').append('<option value="SCIENCE">Science</option>');
-                $('#subject_name').append('<option value="EPP">EPP</option>');
-            }
-            if ($('#grade_level').val() == 7){
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-                $('#subject_name').append('<option value="SCIENCE">Science</option>');
-                $('#subject_name').append('<option value="TLE">TLE</option>');
-            }
-            if ($('#grade_level').val() == 8){
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-                $('#subject_name').append('<option value="SCIENCE">Science</option>');
-                $('#subject_name').append('<option value="TLE">TLE</option>');
-            }
-            if ($('#grade_level').val() == 9){
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-                $('#subject_name').append('<option value="SCIENCE">Science</option>');
-                $('#subject_name').append('<option value="TLE">TLE</option>');
-            }
-            if ($('#grade_level').val() == 10){
-                $('#subject_name').append('<option value="ESP">EsP</option>');
-                $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
-                $('#subject_name').append('<option value="MATH">Math</option>');
-                $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
-                $('#subject_name').append('<option value="ENGLISH">English</option>');
-                $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
-                $('#subject_name').append('<option value="SCIENCE">Science</option>');
-                $('#subject_name').append('<option value="TLE">TLE</option>');
-            }
-            if ($('#grade_level').val() == 11){
-                $('#subject_name').append('<option value="21ST-CEN">21st Century</option>');
-                $('#subject_name').append('<option value="EARTH-SCI">Earth Science</option>');
-                $('#subject_name').append('<option value="GEN-MATH">General Mathemathics</option>');
-                $('#subject_name').append('<option value="KUMONIKASYON">Kumonikasyon</option>');
-                $('#subject_name').append('<option value="ORAL-COMM">Oral Communication</option>');
-                $('#subject_name').append('<option value="PE">Physical Education</option>');
-                $('#subject_name').append('<option value="EMP-TECH">Empowerment Technology</option>');
-                $('#subject_name').append('<option value="TVL">TVL</option>');
-            }
-            if ($('#grade_level').val() == 12){
-                $('#subject_name').append('<option value="21ST-CEN">21st Century</option>');
-                $('#subject_name').append('<option value="ENG-FOR-ACAD">English for Academic</option>');
-                $('#subject_name').append('<option value="PER-DEV">Personal Development</option>');
-                $('#subject_name').append('<option value="PRACTICAL-1">Practical Research 1</option>');
-                $('#subject_name').append('<option value="PRACTICAL-2">Practical Research 2</option>');
-                $('#subject_name').append('<option value="PE">Physical Education</option>');
-                $('#subject_name').append('<option value="TVL">TVL</option>');
-            }
-        });
-    </script>
 @endsection
+
+@push('scripts')
+<script>
+    $('#grade_level').on('change', function(){
+        $('#subject_name').html('');
+        if ($('#grade_level').val() == 0){
+            $('#subject_name').append('<option value="DOMAIN-1">Domain 1</option>');
+            $('#subject_name').append('<option value="DOMAIN-2">Domain 2</option>');
+            $('#subject_name').append('<option value="DOMAIN-3">Domain 3</option>');
+            $('#subject_name').append('<option value="DOMAIN-4">Domain 4</option>');
+            $('#subject_name').append('<option value="DOMAIN-5">Domain 5</option>');
+            $('#subject_name').append('<option value="DOMAIN-6">Domain 6</option>');
+            $('#subject_name').append('<option value="DOMAIN-7">Domain 7</option>');
+        }
+        if ($('#grade_level').val() == 1){
+            $('#subject_name').append('<option value="MTB">MTB</option>');
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+        }
+        if ($('#grade_level').val() == 2){
+            $('#subject_name').append('<option value="MTB">MTB</option>');
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+        }
+        if ($('#grade_level').val() == 3){
+            $('#subject_name').append('<option value="MTB">MTB</option>');
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+            $('#subject_name').append('<option value="SCIENCE">Science</option>');
+        }
+        if ($('#grade_level').val() == 4){
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+            $('#subject_name').append('<option value="SCIENCE">Science</option>');
+            $('#subject_name').append('<option value="EPP">EPP</option>');
+        }
+        if ($('#grade_level').val() == 5){
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+            $('#subject_name').append('<option value="SCIENCE">Science</option>');
+            $('#subject_name').append('<option value="EPP">EPP</option>');
+        }
+        if ($('#grade_level').val() == 6){
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+            $('#subject_name').append('<option value="SCIENCE">Science</option>');
+            $('#subject_name').append('<option value="EPP">EPP</option>');
+        }
+        if ($('#grade_level').val() == 7){
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+            $('#subject_name').append('<option value="SCIENCE">Science</option>');
+            $('#subject_name').append('<option value="TLE">TLE</option>');
+        }
+        if ($('#grade_level').val() == 8){
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+            $('#subject_name').append('<option value="SCIENCE">Science</option>');
+            $('#subject_name').append('<option value="TLE">TLE</option>');
+        }
+        if ($('#grade_level').val() == 9){
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+            $('#subject_name').append('<option value="SCIENCE">Science</option>');
+            $('#subject_name').append('<option value="TLE">TLE</option>');
+        }
+        if ($('#grade_level').val() == 10){
+            $('#subject_name').append('<option value="ESP">EsP</option>');
+            $('#subject_name').append('<option value="ARAPAN">Arapan</option>');
+            $('#subject_name').append('<option value="MATH">Math</option>');
+            $('#subject_name').append('<option value="MAPEH">Mapeh</option>');
+            $('#subject_name').append('<option value="ENGLISH">English</option>');
+            $('#subject_name').append('<option value="FILIPINO">Filipino</option>');
+            $('#subject_name').append('<option value="SCIENCE">Science</option>');
+            $('#subject_name').append('<option value="TLE">TLE</option>');
+        }
+        if ($('#grade_level').val() == 11){
+            $('#subject_name').append('<option value="21ST-CEN">21st Century</option>');
+            $('#subject_name').append('<option value="EARTH-SCI">Earth Science</option>');
+            $('#subject_name').append('<option value="GEN-MATH">General Mathemathics</option>');
+            $('#subject_name').append('<option value="KUMONIKASYON">Kumonikasyon</option>');
+            $('#subject_name').append('<option value="ORAL-COMM">Oral Communication</option>');
+            $('#subject_name').append('<option value="PE">Physical Education</option>');
+            $('#subject_name').append('<option value="EMP-TECH">Empowerment Technology</option>');
+            $('#subject_name').append('<option value="TVL">TVL</option>');
+        }
+        if ($('#grade_level').val() == 12){
+            $('#subject_name').append('<option value="21ST-CEN">21st Century</option>');
+            $('#subject_name').append('<option value="ENG-FOR-ACAD">English for Academic</option>');
+            $('#subject_name').append('<option value="PER-DEV">Personal Development</option>');
+            $('#subject_name').append('<option value="PRACTICAL-1">Practical Research 1</option>');
+            $('#subject_name').append('<option value="PRACTICAL-2">Practical Research 2</option>');
+            $('#subject_name').append('<option value="PE">Physical Education</option>');
+            $('#subject_name').append('<option value="TVL">TVL</option>');
+        }
+    });
+</script>
+@endpush
