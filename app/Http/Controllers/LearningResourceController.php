@@ -84,7 +84,8 @@ class LearningResourceController extends Controller
             'filename' => $filename,
             'filetype' => $filetype,
             'filesize' => $filesize,
-            'filedescription' => $request->filedescription
+            'filedescription' => $request->filedescription,
+            'created_at' => Carbon::now()
         ]);
 
         if(auth()->user()->group_id==1){
