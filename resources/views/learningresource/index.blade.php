@@ -47,6 +47,9 @@
                             Description
                         </th>
                         <th class="text-center">
+                            Status
+                        </th>
+                        <th class="text-center">
                             Action
                         </th>
                     </thead>
@@ -67,6 +70,9 @@
                             </td>
                             <td class="text-center">
                                 {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
+                            </td>
+                            <td @if($file->verified==true) class="text-success text-center" @else class="text-danger text-center" @endif>
+                                {{ $file->verified==true ? 'Verified' : 'Unverified' }}
                             </td>
                             <td class="text-center">
                                 <a class="btn btn-sm btn-info" href="/learningresource/viewFile/{{ $file->id }}">

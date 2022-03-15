@@ -34,7 +34,8 @@ class StudentController extends Controller
         $files = DB::table('tb_learningresource')
         ->join('users', 'tb_learningresource.uploadedbyid', 'users.id')
         ->select('tb_learningresource.*', 'users.first_name', 'users.last_name')
-        ->where('grade_level', $grade_level)->get();
+        ->where('grade_level', $grade_level)
+        ->where('verified', true)->get();
         $numRows = count($files);
 
         return view('studentDashboard', compact('files', 'numRows'));
