@@ -60,6 +60,10 @@ Route::get('/learningresource/openFile/{id}', [LearningResourceController::class
 Route::get('/learningresource/editFile/{id}', [LearningResourceController::class, 'editFile'])->name('learningresource.editFile');
 Route::post('/learningresource/updateFile', [LearningResourceController::class, 'updateFile'])->name('learningresource.updateFile');
 
+//Exclusive Functions for Personnels
+Route::get('/learningresource/unverifiedFiles', [PersonnelController::class, 'displayUnverified'])->name('learningresource.displayUnverified');
+Route::post('/learningresource/verifyFile', [PersonnelController::class, 'verifyFile'])->name('learningresource.verifyFile');
+
 //StudentController Routes
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
 Route::get('/student/resources', [StudentController::class, 'getResources'])->name('student.getResources');
