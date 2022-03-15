@@ -51,7 +51,7 @@
                                     {{ $file->verified==true ? 'Verified' : 'Unverified' }} 
                                 </span>
                         </div>
-                        <a class="btn btn-info mt-2 w-100" href="/learningresource/openFile/{{ $file->id }}">Open File</a>
+                        <a class="btn btn-info mt-2 w-100" href="/learningresource/openFile/{{ $file->id }}" target="_blank">Open File</a>
                     </div>
                 </div>
             </div>

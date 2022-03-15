@@ -76,7 +76,7 @@
                                 {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-sm btn-info mb-1 w-100" href="/learningresource/openFile/{{ $file->id }}">Preview File</a>
+                                <a class="btn btn-sm btn-info mb-1 w-100" href="/learningresource/openFile/{{ $file->id }}" target="_blank">Preview File</a>
                                 <form method="POST" action="{{ route('learningresource.verifyFile') }}">
                                     @csrf
                                     <input type="hidden" name="file_id" value="{{ $file->id }}" >

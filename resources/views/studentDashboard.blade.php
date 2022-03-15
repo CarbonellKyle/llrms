@@ -70,7 +70,7 @@
                                             {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn btn-sm btn-info mb-1 w-100" href="/student/resources/previewFile/{{ $file->id }}">Preview File</a>
+                                            <a class="btn btn-sm btn-info mb-1 w-100" href="/student/resources/previewFile/{{ $file->id }}" target="_blank">Preview File</a>
                                             <form method="GET" action="{{ route('download') }}">
                                                 <input type="hidden" name="file_id" value="{{ $file->id }}" >
                                                 <button class="btn btn-sm btn-primary w-100">Download File</button>
