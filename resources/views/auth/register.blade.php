@@ -8,7 +8,7 @@
             <div class="text-center">
                 <h1 class="mb-3">{{ __('Register') }}</h1>
             </div>
-            <form method="GET" action="{{ route('continueRegister') }}">
+            <form method="GET" action="{{ route('chooseUserType') }}">
                 @csrf
 
                 <!-- Username Input Start -->

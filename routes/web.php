@@ -25,7 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Final registration route
+//Registration route
+Route::get('/chooseUserType', [App\Http\Controllers\Auth\RegisterController::class, 'chooseUserType'])->name('chooseUserType');
 Route::get('/continueRegistration', [App\Http\Controllers\Auth\RegisterController::class, 'continueRegister'])->name('continueRegister');
 
 Auth::routes();
@@ -58,6 +59,10 @@ Route::get('/learningresource/viewFile/{id}', [LearningResourceController::class
 Route::get('/learningresource/openFile/{id}', [LearningResourceController::class, 'openFile'])->name('learningresource.openFile');
 Route::get('/learningresource/editFile/{id}', [LearningResourceController::class, 'editFile'])->name('learningresource.editFile');
 Route::post('/learningresource/updateFile', [LearningResourceController::class, 'updateFile'])->name('learningresource.updateFile');
+
+//Exclusive Functions for Personnels
+Route::get('/learningresource/unverifiedFiles', [PersonnelController::class, 'displayUnverified'])->name('learningresource.displayUnverified');
+Route::post('/learningresource/verifyFile', [PersonnelController::class, 'verifyFile'])->name('learningresource.verifyFile');
 
 //StudentController Routes
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');

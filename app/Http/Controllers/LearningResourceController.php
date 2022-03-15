@@ -77,6 +77,13 @@ class LearningResourceController extends Controller
         $rawfilesize = $request->file('file')->getSize();
         $filesize = $this->formatSizeUnits($rawfilesize);
 
+        //Uploaded files are not verified by default if uploaded not uploaded by Personnel usertype
+        if(auth()->user()->group_id==1){
+            $verified = true;
+        }else{
+            $verified = false;
+        }
+
         DB::table('tb_learningresource')->insert([
             'uploadedbyid' => $request->uploadedbyid,
             'grade_level' => $request->grade_level,
@@ -85,6 +92,7 @@ class LearningResourceController extends Controller
             'filetype' => $filetype,
             'filesize' => $filesize,
             'filedescription' => $request->filedescription,
+            'verified' => $verified,
             'created_at' => Carbon::now()
         ]);
 

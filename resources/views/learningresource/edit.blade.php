@@ -32,7 +32,7 @@
                 <!-- Input File Start -->
                 <!--<input type="file" name="file" class="form-control">-->
                 <img style="height: auto; width: 150px;" src="{{ url($filepath) }}"/><br>
-                <a class="btn btn-info mt-2" href="/learningresource/openFile/{{ $file->id }}">Open File</a>
+                <a class="btn btn-info mt-2" href="/learningresource/openFile/{{ $file->id }}" target="_blank">Open File</a>
                 <!-- Input File End -->
 
                 <br>

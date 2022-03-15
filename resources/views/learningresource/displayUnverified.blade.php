@@ -1,4 +1,4 @@
-@extends($layout, $data) <!-- $layout is the layout file to extend, $data contains variables to be pass at the layout file from the controller -->
+@extends('layouts.personnelLayout')
 
 @section('css')
     
@@ -13,24 +13,28 @@
     </button>
 
     <div class="col-lg-12">
-        <h2 class="text-center">Learning Resources</h2>
-        <a href="{{ route('learningresource.upload') }}" class="btn btn-primary mb-4">Upload Files</a>
+        <h2 class="text-center">Unverified Files</h2>
 
-        @if(Session::has('delete_file'))
-            <div class="alert alert-danger mt-4" role="alert">
-                {{Session::get('delete_file')}}
+        <br><br>
+
+        @if(Session::has('file_verified'))
+            <div class="alert alert-success mt-4" role="alert">
+                {{Session::get('file_verified')}}
             </div>
         @endif
-        
+
         @if($numRows==0)
             <div class="alert alert-warning" role="alert">
-                {{'You haven\'t upload any files yet!'}}
+                {{'There are no unverified files'}}
             </div>
 
             @else
             <div class="table-responsive">
                 <table class="table" id="filesUploadedTable">
                     <thead class=" text-info">
+                        <th class="text-center">
+                            Uploader
+                        </th>
                         <th class="text-center">
                             Filename
                         </th>
@@ -47,15 +51,15 @@
                             Description
                         </th>
                         <th class="text-center">
-                            Status
-                        </th>
-                        <th class="text-center">
                             Action
                         </th>
                     </thead>
                     <tbody>
                     @foreach ($files as $file)
                         <tr>
+                            <td class="text-center">
+                                {{ $file->first_name . ' ' . $file->last_name}}
+                            </td>
                             <td class="text-center">
                                 {{ $file->filename . '.' . $file->filetype}}
                             </td>
@@ -71,19 +75,13 @@
                             <td class="text-center">
                                 {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
                             </td>
-                            <td @if($file->verified==true) class="text-success text-center" @else class="text-danger text-center" @endif>
-                                {{ $file->verified==true ? 'Verified' : 'Unverified' }}
-                            </td>
                             <td class="text-center">
-                                <a class="btn btn-sm btn-info" href="/learningresource/viewFile/{{ $file->id }}">
-                                    View
-                                </a>
-                                <a class="btn btn-sm btn-warning" href="/learningresource/editFile/{{ $file->id }}">
-                                     Edit
-                                </a>
-                                <a class="btn btn-sm btn-danger" href="/learningresource/deleteFile/{{ $file->id }}">
-                                     Delete
-                                </a>
+                                <a class="btn btn-sm btn-info mb-1 w-100" href="/learningresource/openFile/{{ $file->id }}" target="_blank">Preview File</a>
+                                <form method="POST" action="{{ route('learningresource.verifyFile') }}">
+                                    @csrf
+                                    <input type="hidden" name="file_id" value="{{ $file->id }}" >
+                                    <button type="submit" class="btn btn-sm btn-success w-100">Verify</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -95,6 +93,7 @@
 </div>
 @endsection
 
+<!--
 @push('scripts')
     <script>
         $(document).ready( function () {

@@ -42,13 +42,11 @@ public function callback()
                 $email = $googleUser->email;
                 $google_id = $googleUser->id;
 
-                //Entities from each table to use for select options
+                //List off groups or user type to use for select options
                 $groups = DB::table('tb_groups')->get();
-                $offices = DB::table('tb_office')->get();
-                $positions = DB::table('tb_positions')->get();
 
                 //redirect to continue registration page with data above
-                return view('auth.continueregistration', compact('username', 'email', 'google_id', 'groups', 'offices', 'positions'));
+                return view('auth.chooseusertype', compact('username', 'email', 'google_id', 'groups'));
             }
         } catch (Exception $e) {
             dd($e->getMessage());

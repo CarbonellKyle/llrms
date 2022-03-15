@@ -45,7 +45,13 @@
                         <div class="form-group">
                             <strong class="">Description:</strong> {{ $file->filedescription }}
                         </div>
-                        <a class="btn btn-info mt-2 w-100" href="/learningresource/openFile/{{ $file->id }}">Open File</a>
+                        <div class="form-group">
+                            <strong class="">Status:</strong> 
+                                <span @if($file->verified==true) class="text-success" @else class="text-danger" @endif> 
+                                    {{ $file->verified==true ? 'Verified' : 'Unverified' }} 
+                                </span>
+                        </div>
+                        <a class="btn btn-info mt-2 w-100" href="/learningresource/openFile/{{ $file->id }}" target="_blank">Open File</a>
                     </div>
                 </div>
             </div>

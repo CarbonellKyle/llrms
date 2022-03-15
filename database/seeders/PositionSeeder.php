@@ -149,25 +149,25 @@ class PositionSeeder extends Seeder
         DB::table('tb_positions')->insert([
             'name' => 'Head Teacher I',
             'code' => 'HT I',
-            'group_id' => 2
+            'group_id' => 1
         ]);
 
         DB::table('tb_positions')->insert([
             'name' => 'Head Teacher II',
             'code' => 'HT II',
-            'group_id' => 2
+            'group_id' => 1
         ]);
 
         DB::table('tb_positions')->insert([
             'name' => 'Head Teacher III',
             'code' => 'HT III',
-            'group_id' => 2
+            'group_id' => 1
         ]);
 
         DB::table('tb_positions')->insert([
             'name' => 'Head Teacher IV',
             'code' => 'HT IV',
-            'group_id' => 2
+            'group_id' => 1
         ]);
 
         DB::table('tb_positions')->insert([
