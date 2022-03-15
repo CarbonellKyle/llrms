@@ -41,7 +41,8 @@
                 <!-- Grade Level Select Start -->
                 <div class="form-floating my-2">
                     <select class="form-select" id="grade_level" name="grade_level">
-                        <option value="0" selected>Kinder</option>
+                        <option value="none" selected disabled hidden>Select Grade Level</option>
+                        <option value="0">Kinder</option>
                         <option value="1">Grade 1</option>
                         <option value="2">Grade 2</option>
                         <option value="3">Grade 3</option>
@@ -62,13 +63,7 @@
                 <!-- Subject Start -->
                 <div class="form-floating">
                     <select class="form-select" id="subject_name" name="subject_name">
-                        <option value="D1">Domain 1</option>
-                        <option value="D2">Domain 2</option>
-                        <option value="D3">Domain 3</option>
-                        <option value="D4">Domain 4</option>
-                        <option value="D5">Domain 5</option>
-                        <option value="D6">Domain 6</option>
-                        <option value="D7">Domain 7</option>
+                        <option value="none" selected disabled hidden>Select Subject</option>
                     </select>
                     <label for="subject_name">Subject</label>
                 </div>
@@ -83,7 +78,10 @@
         </div>
         </div>
     </div>
+@endsection
 
+
+    @push('scripts')
     <script>
         $('#grade_level').on('change', function(){
             $('#subject_name').html('');
@@ -213,4 +211,4 @@
             }
         });
     </script>
-@endsection
+    @endpush

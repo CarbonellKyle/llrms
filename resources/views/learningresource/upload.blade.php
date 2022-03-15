@@ -36,7 +36,8 @@
                 <!-- Grade Level Select Start -->
                 <div class="form-floating my-2">
                     <select class="form-select" id="grade_level" name="grade_level">
-                        <option value="0" selected>Kinder</option>
+                        <option value="none" selected disabled hidden>Select Grade Level</option>
+                        <option value="0">Kinder</option>
                         <option value="1">Grade 1</option>
                         <option value="2">Grade 2</option>
                         <option value="3">Grade 3</option>
@@ -57,13 +58,7 @@
                 <!-- Subject Start -->
                 <div class="form-floating">
                     <select class="form-select" id="subject_name" name="subject_name">
-                        <option value="DOMAIN-1">Domain 1</option>
-                        <option value="DOMAIN-2">Domain 2</option>
-                        <option value="DOMAIN-3">Domain 3</option>
-                        <option value="DOMAIN-4">Domain 4</option>
-                        <option value="DOMAIN-5">Domain 5</option>
-                        <option value="DOMAIN-6">Domain 6</option>
-                        <option value="DOMAIN-7">Domain 7</option>
+                        <option value="none" selected disabled hidden>Select Subject</option>
                     </select>
                     <label for="subject_name">Subject</label>
                 </div>
