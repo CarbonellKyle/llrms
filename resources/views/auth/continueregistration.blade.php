@@ -19,7 +19,7 @@
                 <!-- Hidden since already filled during initial registration -->
                 <input id="username" type="hidden" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $username }}" required autocomplete="username" autofocus>
 
-                <div class="d-flex">
+                <div class="d-flex mb-2">
                     <!-- First Name Input Start -->
                     <div class="form-floating me-1">
                         <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" required autocomplete="first_name" autofocus>
@@ -45,33 +45,20 @@
                     <!-- Last Name Input End -->
                 </div>
                 
-
-                <!-- Group Select Start -->
-                <div class="form-floating my-2">
-                    <select id="group_id" name="group_id" class="form-select" required>
-                        <option value="none" selected disabled hidden>Select Group</option>
-                        @foreach( $groups as $group )
-                            <option value="{{ $group->id }}">{{ $group->name }}</option>
-                        @endforeach
-                    </select>
-                    <label for="group_id">Group</label>
-                </div>
-                @if ($errors->has('group_id'))
-                    <span class="invalid-feedback" style="display: block;" role="alert">
-                        <strong>{{ $errors->first('group_id') }}</strong>
-                    </span>
-                @endif
-                <!-- Group Select End -->
+                <!-- Group id is hidden since already filled during choose user type -->
+                <input type="hidden" name="group_id" value="{{ $group_id }}">
 
                 <!-- Office Select Start -->
                 <div class="form-floating mb-2">
                     <select id="office_id" name="office_id" class="form-select" required>
-                        <option value="none" selected disabled hidden>Select Office</option>
+                        <!-- Change the word 'Office' into 'School' if usertype is Student -->
+                        <option value="none" selected disabled hidden>{{ $group_id!=3 ? 'Select Office' : 'Select School'}}</option>
                         @foreach( $offices as $office )
                             <option value="{{ $office->id }}">{{ $office->officename }}</option>
                         @endforeach
                     </select>
-                    <label for="office_id">Office</label>
+                    <!-- Change the word 'Office' into 'School' if usertype is Student -->
+                    <label for="office_id">{{ $group_id!=3 ? 'Office' : 'School' }}</label>
                 </div>
                 @if ($errors->has('office_id'))
                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -83,12 +70,14 @@
                 <!-- Position Select Start -->
                 <div class="form-floating mb-2">
                     <select id="position_id" name="position_id" class="form-select" required>
-                        <option value="none" selected disabled hidden>Select Position</option>
+                        <!-- Change the word 'Position' into 'Grade Level' if usertype is Student -->
+                        <option value="none" selected disabled hidden>{{ $group_id!=3 ? 'Select Position' : 'Select Grade Level'}}</option>
                         @foreach( $positions as $position )
                             <option value="{{ $position->id }}">{{ $position->name }}</option>
                         @endforeach
                     </select>
-                    <label for="position_id">Position</label>
+                    <!-- Change the word 'Position' into 'Grade Level' if usertype is Student -->
+                    <label for="position_id">{{ $group_id!=3 ? 'Position' : 'Grade Level'}}</label>
                 </div>
                 @if ($errors->has('position_id'))
                     <span class="invalid-feedback" style="display: block;" role="alert">

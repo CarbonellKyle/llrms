@@ -73,20 +73,44 @@ class RegisterController extends Controller
         ]);
     }
 
-    //Recieves data from initial registration to be passed into complete registration blade file
-    protected function continueRegister(Request $request)
+    //Recieves data from initial registration to be passed into choose user type blade file
+    protected function chooseUserType(Request $request)
     {
         //Data retrieved from user's initial registration
         $username = $request->username;
         $email = $request->email;
 
-        //Entities from each table to use for select options
+        //List off groups or user type to use for select options
         $groups = DB::table('tb_groups')->get();
-        $offices = DB::table('tb_office')->orderBy('officename', 'ASC')->get();
-        $positions = DB::table('tb_positions')->get();
 
-        //redirect to continue registration page with data above
-        return view('auth.continueregistration', compact('username', 'email', 'groups', 'offices', 'positions'));
+        //if not signed in with google
+        if(!(isset($request->google_id))){
+            return view('auth.chooseusertype', compact('username', 'email', 'groups'));
+        }
+
+        $google_id = $request->google_id;
+        return view('auth.chooseusertype', compact('username', 'email', 'groups', 'google_id'));
+    }
+
+    //Recieves data from initial registration, and chooseUserType to be passed into complete registration blade file
+    protected function continueRegister(Request $request)
+    {
+        //Data retrieved from user's initial registration
+        $username = $request->username;
+        $email = $request->email;
+        $group_id = $request->group_id; //Group id from choose user type
+
+        //Entities from each table to use for select options
+        $offices = DB::table('tb_office')->orderBy('officename', 'ASC')->get();
+        $positions = DB::table('tb_positions')->where('group_id', $group_id)->get();
+
+        //if not signed in with google
+        if(!(isset($request->google_id))){
+            return view('auth.continueregistration', compact('username', 'email', 'group_id', 'offices', 'positions'));
+        }
+
+        $google_id = $request->google_id;
+        return view('auth.continueregistration', compact('username', 'email', 'group_id', 'offices', 'positions', 'google_id'));
     }
 
     /**

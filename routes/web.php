@@ -25,7 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Final registration route
+//Registration route
+Route::get('/chooseUserType', [App\Http\Controllers\Auth\RegisterController::class, 'chooseUserType'])->name('chooseUserType');
 Route::get('/continueRegistration', [App\Http\Controllers\Auth\RegisterController::class, 'continueRegister'])->name('continueRegister');
 
 Auth::routes();
