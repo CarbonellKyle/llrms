@@ -41,7 +41,7 @@
                 <!-- Grade Level Select Start -->
                 <div class="form-floating my-2">
                     <select class="form-select" id="grade_level" name="grade_level">
-                        <option value="none" selected disabled hidden>Select Grade Level</option>
+                        <option value="{{ $file->grade_level }}" selected disabled hidden>{{ $file->grade_level!=0 ? 'Grade ' . $file->grade_level : 'Kinder'}}</option>
                         <option value="0">Kinder</option>
                         <option value="1">Grade 1</option>
                         <option value="2">Grade 2</option>
@@ -63,7 +63,7 @@
                 <!-- Subject Start -->
                 <div class="form-floating">
                     <select class="form-select" id="subject_name" name="subject_name">
-                        <option value="none" selected disabled hidden>Select Subject</option>
+                        <option value="{{ $file->subject_name }}" selected disabled hidden>{{ $file->subject_name }}</option>
                     </select>
                     <label for="subject_name">Subject</label>
                 </div>
