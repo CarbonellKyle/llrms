@@ -66,6 +66,10 @@ class DownloadController extends Controller
 
         $path = $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
 
-        return Storage::disk('learningresource')->response($path);
+        if(Storage::disk('learningresource')->exists($path)){
+            return Storage::disk('learningresource')->response($path);
+        }else{
+            return 'File not found! Must been deleted in its folder!';
+        }
     }
 }
