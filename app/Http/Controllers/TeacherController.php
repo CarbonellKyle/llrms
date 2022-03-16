@@ -26,6 +26,9 @@ class TeacherController extends Controller
         ->where('users.id', auth()->user()->id)->first();
         $position = $user_position->name; //user's position name
 
-        return view('teacherDashboard', compact('position'));
+        //Number of students in the teacher's school
+        $noOfStudents = count(DB::table('users')->where('group_id', 3)->where('office_id', auth()->user()->office_id)->get()); //Number of Students
+
+        return view('teacherDashboard', compact('position', 'noOfStudents'));
     }
 }
