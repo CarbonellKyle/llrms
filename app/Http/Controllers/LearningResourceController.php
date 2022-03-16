@@ -77,6 +77,12 @@ class LearningResourceController extends Controller
         $rawfilesize = $request->file('file')->getSize();
         $filesize = $this->formatSizeUnits($rawfilesize);
 
+        //Suspicious files
+        $sus = ['js', 'json', 'exe'];
+        if(in_array($filetype, $sus)){
+            return back()->with('sus_file', 'Suspicious filetype: \'' . $filetype . '\'. Cannont upload this kind of file! ');
+        }
+
         //Uploaded files are not verified by default if uploaded not uploaded by Personnel usertype
         if(auth()->user()->group_id==1){
             $verified = true;

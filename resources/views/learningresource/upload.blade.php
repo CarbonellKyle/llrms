@@ -23,6 +23,12 @@
             </div>
         @endif
 
+        @if(Session::has('sus_file'))
+            <div class="alert alert-danger mt-4" role="alert">
+                {{Session::get('sus_file')}}
+            </div>
+        @endif
+
         <div class="card">
             <div class="card-header">
                 <h5 class="title m-0">{{ __('Upload Files') }}</h5>
