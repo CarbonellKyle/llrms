@@ -130,8 +130,6 @@ class LearningResourceController extends Controller
 
         if(Storage::disk('learningresource')->exists($path)){
             Storage::disk('learningresource')->delete($path);
-        } else {
-            return 'Not Found';
         }
 
         DB::table('tb_learningresource')->where('id', $id)->delete();
@@ -204,7 +202,11 @@ class LearningResourceController extends Controller
 
         $path = $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
 
-        return Storage::disk('learningresource')->response($path);
+        if(Storage::disk('learningresource')->exists($path)){
+            return Storage::disk('learningresource')->response($path);
+        }else{
+            return 'File not found! Must been deleted in its folder!';
+        }
     }
 
     public function editFile($id)
