@@ -24,8 +24,8 @@
                     </svg>
                 </div>
                 <div class="box-text">
-                    <h4>{{ __('Students') }}</h4>
-                    <p>{{ __('No of Students') }}</p>
+                    <h4>{{ __('Students in your school') }}</h4>
+                    <p>{{ $noOfStudents }}</p>
                 </div>
             </div>
         </div>
