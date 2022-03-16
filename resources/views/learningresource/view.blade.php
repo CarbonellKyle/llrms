@@ -40,7 +40,7 @@
                             <strong class="">Filesize:</strong> {{ $file->filesize }}
                         </div>
                         <div class="form-group">
-                            <strong class="">For:</strong> {{ 'Grade ' . $file->grade_level . ' Students' }}
+                            <strong class="">For:</strong> {{ $file->grade_level!=0 ? 'Grade ' . $file->grade_level . ' Students' : 'Kinder Students'}}
                         </div>
                         <div class="form-group">
                             <strong class="">Subject:</strong> {{ $file->subject_name }}

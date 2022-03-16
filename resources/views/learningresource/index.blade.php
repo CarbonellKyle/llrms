@@ -68,7 +68,7 @@
                                 {{ $file->filesize }}
                             </td>
                             <td class="text-center">
-                                {{ $file->grade_level }}
+                                {{ $file->grade_level!=0 ? 'Grade ' . $file->grade_level : 'Kinder' }}
                             </td>
                             <td class="text-center">
                                 {{ $file->subject_name }}

@@ -35,10 +35,10 @@ class LearningResourceController extends Controller
         if(auth()->user()->group_id==1) {
             //If user is a personnel
             $layout = 'layouts.personnelLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav
+            $data = ['position' => $user_position->name, 'active' => 'resources']; //Variables for sidenav
         } else {
             $layout = 'layouts.teacherLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav$layout = 'layouts.app';
+            $data = ['position' => $user_position->name, 'active' => 'resources']; //Variables for sidenav
         }
         return view('learningresource.index', compact('layout', 'data', 'files', 'numRows'));
     }
@@ -55,10 +55,10 @@ class LearningResourceController extends Controller
         if(auth()->user()->group_id==1) {
             //If user is a personnel
             $layout = 'layouts.personnelLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav
+            $data = ['position' => $user_position->name, 'active' => 'resources']; //Variables for sidenav
         } else {
             $layout = 'layouts.teacherLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav$layout = 'layouts.app';
+            $data = ['position' => $user_position->name, 'active' => 'resources']; //Variables for sidenav
         }
         return view('learningresource.upload', compact('layout', 'data'));
     }
@@ -67,7 +67,7 @@ class LearningResourceController extends Controller
     {
         $validatedData = $request->validate([
             'file' => 'required',
-            'grade_level' => 'required|numeric|min:1|max:12',
+            'grade_level' => 'required|numeric|max:12',
             'subject_name' => 'required',
         ]);
 
@@ -151,10 +151,10 @@ class LearningResourceController extends Controller
         if(auth()->user()->group_id==1) {
             //If user is a personnel
             $layout = 'layouts.personnelLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav
+            $data = ['position' => $user_position->name, 'active' => 'resources']; //Variables for sidenav
         } else {
             $layout = 'layouts.teacherLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav
+            $data = ['position' => $user_position->name, 'active' => 'resources']; //Variables for sidenav
         }
 
         //filetypes
@@ -219,10 +219,10 @@ class LearningResourceController extends Controller
         if(auth()->user()->group_id==1) {
             //If user is a personnel
             $layout = 'layouts.personnelLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav
+            $data = ['position' => $user_position->name, 'active' => 'resources']; //Variables for sidenav
         } else {
             $layout = 'layouts.teacherLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav$layout = 'layouts.app';
+            $data = ['position' => $user_position->name, 'active' => 'resources']; //Variables for sidenav
         }
 
         //filetypes

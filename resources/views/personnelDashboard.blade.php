@@ -1,4 +1,4 @@
-@extends('layouts.personnelLayout')
+@extends('layouts.personnelLayout', ['active' => 'dashboard'])
 
 @section('content')
 <div id="content" class="content-wrapper p-3">
