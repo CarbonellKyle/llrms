@@ -63,6 +63,7 @@ Route::post('/learningresource/updateFile', [LearningResourceController::class, 
 //Exclusive Functions for Personnels
 Route::get('/learningresource/unverifiedFiles', [PersonnelController::class, 'displayUnverified'])->name('learningresource.displayUnverified');
 Route::post('/learningresource/verifyFile', [PersonnelController::class, 'verifyFile'])->name('learningresource.verifyFile');
+Route::get('/users/teachers', [PersonnelController::class, 'showTeacherList'])->name('users.showTeacherList');
 
 //StudentController Routes
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');

@@ -1,7 +1,7 @@
 @extends('layouts.personnelLayout', ['active' => 'verify'])
 
 @section('css')
-    
+    <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -14,7 +14,6 @@
 
     <div class="col-lg-12">
         <h2 class="text-center">Unverified Files</h2>
-
         <br><br>
 
         @if(Session::has('file_verified'))
@@ -30,7 +29,7 @@
 
             @else
             <div class="table-responsive">
-                <table class="table" id="filesUploadedTable">
+                <table class="table" id="unverifiedFilesTable">
                     <thead class=" text-info">
                         <th class="text-center">
                             Uploader
@@ -93,11 +92,11 @@
 </div>
 @endsection
 
-<!--
 @push('scripts')
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready( function () {
-            $('#filesUploadedTable').DataTable();
+            $('#unverifiedFilesTable').DataTable();
         } );
     </script>
 @endpush
