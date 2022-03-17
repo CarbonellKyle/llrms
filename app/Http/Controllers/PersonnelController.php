@@ -59,4 +59,24 @@ class PersonnelController extends Controller
 
         return back()->with('file_verified', 'File has been verified successfully');
     }
+
+    public function showTeacherList()
+    {
+        //Get the position name from tb_positions using the position_id of the authenticated user
+        $user_position = DB::table('users')
+        ->join('tb_positions', 'users.position_id', 'tb_positions.id')
+        ->select('tb_positions.name')
+        ->where('users.id', auth()->user()->id)->first();
+        $position = $user_position->name; //user's position name
+
+        $teachers = DB::table('users')
+        ->join('tb_office', 'users.office_id', 'tb_office.id')
+        ->join('tb_positions', 'users.position_id', 'tb_positions.id')
+        ->select('users.*', 'tb_office.officename', 'tb_office.district', 'tb_positions.name')
+        ->where('users.group_id', 2)->get();
+
+        $numRows = count($teachers);
+
+        return view('users.teachers', compact('position', 'teachers', 'numRows'));
+    }
 }
