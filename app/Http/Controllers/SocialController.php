@@ -23,7 +23,7 @@ public function callback()
             $googleUser = Socialite::driver('google')->stateless()->user();
             $user = User::where('google_id', $googleUser->id)->first();
 
-            //If user already have an account in this app
+            //If user already have an account in this app signed in with google
             if($user){
                 Auth::login($user);
                 if($user->group_id==1){
@@ -37,6 +37,27 @@ public function callback()
                 }
                 return redirect('/home');
             }else{
+                //If email already exist in the system but not binded on google
+                if(DB::table('users')->where('email', $googleUser->email)->first()!=null){
+                    $signedUser = User::where('email', $googleUser->email)->first();
+
+                    DB::table('users')->where('email', $googleUser->email)->update([
+                        'google_id' => $googleUser->id
+                    ]);
+
+                    Auth::login($signedUser);
+                    if($signedUser->group_id==1){
+                        return redirect('/personnel');
+                    }
+                    elseif($signedUser->group_id==2){
+                        return redirect('/teacher');
+                    }
+                    elseif($signedUser->group_id==3){
+                        return redirect('/student');
+                    }
+                    return redirect('/home');
+                }
+
                 //Data retrieved from user's google account
                 $username = $googleUser->name;
                 $email = $googleUser->email;
