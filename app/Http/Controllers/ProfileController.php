@@ -37,10 +37,10 @@ class ProfileController extends Controller
         if(auth()->user()->group_id==2) {
             //If user is a teacher
             $layout = 'layouts.teacherLayout';
-            $data = ['position' => $user_position->name]; //User position at sidenav
+            $data = ['position' => $user_position->name, 'active' => 'dashboard']; //User position at sidenav
         } else {
             $layout = 'layouts.app';
-            $data = ['position' => $user_position->name]; //User position at sidenav
+            $data = ['position' => $user_position->name, 'active' => 'dashboard']; //User position at sidenav
         }
 
         return view('profile.edit', compact('layout', 'data', 'offices', 'user_office', 'positions', 'user_position'));
