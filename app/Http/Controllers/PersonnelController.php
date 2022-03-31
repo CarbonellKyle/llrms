@@ -51,10 +51,21 @@ class PersonnelController extends Controller
         return view('learningresource.displayUnverified', compact('position', 'files', 'numRows'));
     }
 
+    public function addRemarks(Request $request)
+    {
+        DB::table('tb_learningresource')->where('id', $request->file_id)->update([
+            'remarks' => $request->remarks,
+            'reviewedby' => auth()->user()->first_name . ' ' . auth()->user()->last_name
+        ]);
+
+        return back()->with('review_submitted', 'Your review has been submitted!');
+    }
+
     public function verifyFile(Request $request)
     {
         DB::table('tb_learningresource')->where('id', $request->file_id)->update([
-            'verified' => true
+            'verified' => true,
+            'verifiedby' => auth()->user()->first_name . ' ' . auth()->user()->last_name
         ]);
 
         return back()->with('file_verified', 'File has been verified successfully');

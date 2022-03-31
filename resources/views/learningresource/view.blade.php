@@ -50,13 +50,84 @@
                         </div>
                         <div class="form-group">
                             <strong class="">Status:</strong> 
-                                <span @if($file->verified==true) class="text-success" @else class="text-danger" @endif> 
-                                    {{ $file->verified==true ? 'Verified' : 'Unverified' }} 
-                                </span>
+                                @if($file->verified==true)
+                                    <span class="text-success">
+                                        {{ 'Verified by ' . $file->verifiedby }}
+                                    </span>
+
+                                    @else
+                                    <span @if($file->remarks!=null) class="text-warning" @else class="text-danger" @endif> 
+                                        {{ $file->remarks!=null ? 'Reviewed by ' . $file->reviewedby : 'Unverified' }} 
+                                    </span>
+                                @endif
                         </div>
                         <a class="btn btn-info mt-2 w-100" href="/learningresource/openFile/{{ $file->id }}" target="_blank">Open File</a>
                     </div>
                 </div>
+
+                <!-- Remarks Section for Teacher View -->
+                @if(auth()->user()->group_id==2)
+
+                    @if(Session::has('review_submitted'))
+                        <div class="alert alert-success mt-4" role="alert">
+                            {{Session::get('review_submitted')}}
+                        </div>
+                    @endif
+
+                    @if(Session::has('file_verified'))
+                        <div class="alert alert-success mt-4" role="alert">
+                            {{Session::get('file_verified')}}
+                        </div>
+                    @endif
+
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <!-- Remarks Start -->
+                            <h5>{{ $file->remarks!=null ? 'Remarks from ' . $file->reviewedby : 'Remarks' }}<h5>
+                            <textarea disabled name="remarks" id="file_desciption" class="form-control my-2" style="height: 100px; resize: none;" placeholder="No remarks">{{ $file->remarks }}</textarea>
+                            <!-- Remarks End -->
+                                
+                        </div>
+                    </div>
+                @endif  
+
+                <!-- Remarks Section for Personnel View -->
+                @if(auth()->user()->group_id==1)
+
+                    @if(Session::has('review_submitted'))
+                        <div class="alert alert-success mt-4" role="alert">
+                            {{Session::get('review_submitted')}}
+                        </div>
+                    @endif
+
+                    @if(Session::has('file_verified'))
+                        <div class="alert alert-success mt-4" role="alert">
+                            {{Session::get('file_verified')}}
+                        </div>
+                    @endif
+
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('learningresource.addRemarks') }}">
+                                @csrf
+                                <input type="hidden" name="file_id" value="{{ $file->id }}" >
+                                <!-- Remarks Start -->
+                                <h5>Remarks<h5>
+                                <textarea name="remarks" id="file_desciption" class="form-control my-2" style="height: 100px; resize: none;" placeholder="Add Remarks">{{ $file->remarks }}</textarea>
+                                <!-- Remarks End -->
+                                
+                                <button type="submit" class="btn btn-primary mt-2 w-100">Submit Review</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card mt-2" @if($file->verified==true) hidden @endif>
+                        <form method="POST" action="{{ route('learningresource.verifyFile') }}">
+                            @csrf
+                            <input type="hidden" name="file_id" value="{{ $file->id }}" >
+                            <button type="submit" class="btn btn-sm btn-success w-100">Verify</button>
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

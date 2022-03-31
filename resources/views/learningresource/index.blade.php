@@ -76,9 +76,18 @@
                             <td class="text-center">
                                 {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
                             </td>
-                            <td @if($file->verified==true) class="text-success text-center" @else class="text-danger text-center" @endif>
-                                {{ $file->verified==true ? 'Verified' : 'Unverified' }}
-                            </td>
+                            @if($file->verified==true)
+                                <td class="text-center text-success">
+                                    {{ 'Verified' }}
+                                </td>
+
+                                    @else
+                                    <td @if($file->remarks!=null) class="text-warning text-center" @else class="text-danger text-center" @endif>
+                                    {{ $file->remarks!=null ? 'Reviewed' : 'Unverified' }}
+                                    </td>
+
+                            @endif
+                            
                             <td class="text-center">
                                 <a class="btn btn-sm btn-info" href="/learningresource/viewFile/{{ $file->id }}">
                                     View

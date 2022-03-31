@@ -60,8 +60,10 @@ Route::get('/learningresource/openFile/{id}', [LearningResourceController::class
 Route::get('/learningresource/editFile/{id}', [LearningResourceController::class, 'editFile'])->name('learningresource.editFile');
 Route::post('/learningresource/updateFile', [LearningResourceController::class, 'updateFile'])->name('learningresource.updateFile');
 
+
 //Exclusive Functions for Personnels
 Route::get('/learningresource/unverifiedFiles', [PersonnelController::class, 'displayUnverified'])->name('learningresource.displayUnverified');
+Route::post('/learningresource/addRemarks', [PersonnelController::class, 'addRemarks'])->name('learningresource.addRemarks');
 Route::post('/learningresource/verifyFile', [PersonnelController::class, 'verifyFile'])->name('learningresource.verifyFile');
 Route::get('/users/teachers', [PersonnelController::class, 'showTeacherList'])->name('users.showTeacherList');
 
