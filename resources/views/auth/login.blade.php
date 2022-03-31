@@ -41,7 +41,7 @@
                     <p class="text-uppercase text-center bg-white px-3">or</p>
                 </div>
                 <a href="{{ url('/redirect') }}"><img src="{{ asset('images/google-signin.png') }}" class="img-fluid" alt="Google Sign In"></a>
-                <p class="mt-2 text-center">Don't have an account? <a href="{{ url('/register') }}" class="text-decoration-none text-primary">Sign Up Now!</a></p>
+                <!--<p class="mt-2 text-center">Don't have an account? <a href="{{ url('/register') }}" class="text-decoration-none text-primary">Sign Up Now!</a></p>-->
             </form>
         </section>
     </div>
