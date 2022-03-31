@@ -26,11 +26,12 @@ class PersonnelController extends Controller
         ->where('users.id', auth()->user()->id)->first();
         $position = $user_position->name; //user's position name
 
+        $noOfPersonnels = count(DB::table('users')->where('group_id', 1)->get()); //Number of Personnels
         $noOfTeachers = count(DB::table('users')->where('group_id', 2)->get()); //Number of Teachers
         $noOfStudents = count(DB::table('users')->where('group_id', 3)->get()); //Number of Students
 
 
-        return view('personnelDashboard', compact('position', 'noOfTeachers', 'noOfStudents'));
+        return view('personnelDashboard', compact('position', 'noOfTeachers', 'noOfStudents', 'noOfPersonnels'));
     }
 
     public function displayUnverified()

@@ -4,10 +4,12 @@
 
 <div class="site-grad">
     <div class="site-grid">
+        @auth()
         <section id="form-wrapper" class="shadow-lg px-4 bg-white">
             <div class="text-center">
                 <h2 class="mb-3">{{ __('Who will use this account?') }}</h2>
             </div>
+
             <form method="GET" action="{{ route('continueRegister') }}">
                 @csrf
 
@@ -18,16 +20,23 @@
 
                 <!-- Hidden since already filled during initial registration -->
                 <input id="username" type="hidden" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $username }}" required autocomplete="username" autofocus>
-                
+
                 <!-- Group Select Start -->
                 <div class="form-floating my-2">
-                    <select id="group_id" name="group_id" class="form-select" required>
-                        <option value="none" selected disabled hidden>Select Usertype</option>
-                        @foreach( $groups as $group )
-                            <option value="{{ $group->id }}">{{ $group->name }}</option>
-                        @endforeach
-                    </select>
-                    <label for="group_id">Group</label>
+                    <div class="col-12 d-flex">
+                        <div class="col-4" @if((auth()->user()->id)!=1) hidden @endif>
+                            <input type="radio" id="personnel" name="group_id" value="1">
+                            <label for="personnel">Personnel</label>
+                        </div>
+                        <div class="col-4" @if((auth()->user()->group_id)>1) hidden @endif >
+                            <input type="radio" id="teacher" name="group_id" value="2" class="ml-4">
+                            <label for="teacher">Teacher</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" id="student" name="group_id" value="3" class="ml-4">
+                            <label for="student">Student</label>
+                        </div>
+                    </div>
                 </div>
                 @if ($errors->has('group_id'))
                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -43,6 +52,11 @@
 
             </form>
         </section>
+        @endauth
+
+        @guest()
+            <h1 class="text-center">You have no rights to register an account!<br> Please ask your Superior/Teacher</h1>
+        @endguest
     </div>
 </div>
 
