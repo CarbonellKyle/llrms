@@ -68,7 +68,10 @@ class CreateLlrmsTables extends Migration
             $table->string('filetype', 30);
             $table->string('filesize', 20);
             $table->string('filedescription', 100)->nullable();
+            $table->string('remarks', 255)->nullable();
+            $table->string('reviewedby', 100)->nullable();
             $table->boolean('verified');
+            $table->string('verifiedby', 100)->nullable();
             $table->timestamps();
         });
 

@@ -86,8 +86,10 @@ class LearningResourceController extends Controller
         //Uploaded files are not verified by default if uploaded not uploaded by Personnel usertype
         if(auth()->user()->group_id==1){
             $verified = true;
+            $verifiedby = auth()->user()->first_name . ' ' . auth()->user()->last_name;
         }else{
             $verified = false;
+            $verifiedby = null;
         }
 
         DB::table('tb_learningresource')->insert([
@@ -99,6 +101,7 @@ class LearningResourceController extends Controller
             'filesize' => $filesize,
             'filedescription' => $request->filedescription,
             'verified' => $verified,
+            'verifiedby' => $verifiedby,
             'created_at' => Carbon::now()
         ]);
 

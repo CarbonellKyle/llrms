@@ -16,11 +16,11 @@
         <h2 class="text-center">Unverified Files</h2>
         <br><br>
 
-        @if(Session::has('file_verified'))
+        <!--@if(Session::has('file_verified'))
             <div class="alert alert-success mt-4" role="alert">
                 {{Session::get('file_verified')}}
             </div>
-        @endif
+        @endif-->
 
         @if($numRows==0)
             <div class="alert alert-warning" role="alert">
@@ -50,6 +50,9 @@
                             Description
                         </th>
                         <th class="text-center">
+                            Status
+                        </th>
+                        <th class="text-center">
                             Action
                         </th>
                     </thead>
@@ -75,12 +78,22 @@
                                 {{ $file->filedescription == null ? 'No Description' : $file->filedescription }}
                             </td>
                             <td class="text-center">
-                                <a class="btn btn-sm btn-info mb-1 w-100" href="/learningresource/openFile/{{ $file->id }}" target="_blank">Preview File</a>
-                                <form method="POST" action="{{ route('learningresource.verifyFile') }}">
+                                <span @if($file->remarks!=null) class="text-success" @endif> 
+                                    {{ $file->remarks == null ? 'Unreviewed' : 'Reviewed' }}
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-sm btn-info mb-1 w-100" href="/learningresource/openFile/{{ $file->id }}" target="_blank">
+                                    Open File
+                                </a>
+                                <a class="btn btn-sm btn-success mb-1 w-100" href="/learningresource/viewFile/{{ $file->id }}">
+                                    Review & Verify
+                                </a>
+                                <!--<form method="POST" action="{{ route('learningresource.verifyFile') }}">
                                     @csrf
                                     <input type="hidden" name="file_id" value="{{ $file->id }}" >
                                     <button type="submit" class="btn btn-sm btn-success w-100">Verify</button>
-                                </form>
+                                </form>-->
                             </td>
                         </tr>
                     @endforeach
