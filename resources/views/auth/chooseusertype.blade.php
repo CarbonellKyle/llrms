@@ -55,7 +55,11 @@
         @endauth
 
         @guest()
-            <h1 class="text-center">You have no rights to register an account!<br> Please ask your Superior/Teacher</h1>
+            <div class="text-center">
+                <img src="{{ asset('images/oops.jpg') }}" style="width: 400px; height: auto;" />
+                <h1 class="mt-2">Your gmail is not registered on this site!<h1>
+                <h3 style="margin-top: -10px;">Please ask your Superior/Teacher to create an acount for you</h3>
+            </div>
         @endguest
     </div>
 </div>
