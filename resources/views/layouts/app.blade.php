@@ -34,7 +34,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                 @guest
-                    @else
+                    @elseif(auth()->user()->group_id==3)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('student.index') }}">{{ __('Home') }}</a>
                         </li>

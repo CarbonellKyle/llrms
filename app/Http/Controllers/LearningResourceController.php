@@ -177,15 +177,24 @@ class LearningResourceController extends Controller
 
         $path = '/learningresource' . '/' . $usertype . '/' . $uploader->id . '/' . $fileOriginalName;
 
+        //Number of students who downloaded the file
+        $noOfDownloads = DB::table('tb_downloadedfile')->where('resource_id', $id)->distinct()->count('downloadedbyid');
+
+        //Downloaders
+        $downloaders = DB::table('tb_downloadedfile')
+        ->join('users', 'tb_downloadedfile.downloadedbyid', 'users.id')
+        ->select('users.first_name', 'users.last_name')
+        ->where('tb_downloadedfile.resource_id', $id)->get();
+
         //if file is not an image
         if(! in_array($file->filetype, $image)){
             $filepath = "../../images/docThumnail.jpg";
-            return view('learningresource.view', compact('layout', 'data', 'file', 'filepath'));
+            return view('learningresource.view', compact('layout', 'data', 'file', 'filepath', 'downloaders', 'noOfDownloads'));
         }
         
         //images as default file
         $filepath = $path;
-        return view('learningresource.view', compact('layout', 'data', 'file', 'filepath'));
+        return view('learningresource.view', compact('layout', 'data', 'file', 'filepath', 'downloaders', 'noOfDownloads'));
     }
 
     public function openFile($id)
