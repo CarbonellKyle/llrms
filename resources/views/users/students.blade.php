@@ -1,4 +1,4 @@
-@extends('layouts.personnelLayout', ['active' => 'teachers'])
+@extends('layouts.teacherLayout', ['active' => 'students'])
 
 @section('css')
     <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -13,51 +13,35 @@
     </button>
   	
     <div class="col-lg-12">
-        <h2 class="text-center">List of Teachers</h2>
-        <h5 class="text-center">{{ $officename }}</h5>
+        <h2 class="text-center">List of Students</h2>
+        <h5 class="text-center">{{ $school }}</h5>
         <br><br>
 
         @if($numRows==0)
             <div class="alert alert-warning" role="alert">
-                {{'There are no teachers registered in this system yet'}}
+                {{'There are no students registered in this system yet'}}
             </div>
 
             @else
             <div class="table-responsive">
-                <table class="table" id="teachersTable">
+                <table class="table" id="studentsTable">
                     <thead class=" text-info">
                         <th class="text-center">
                             Name
                         </th>
                         <th class="text-center">
-                            Position
+                            Grade Level
                         </th>
-                        @if(auth()->user()->id==1)
-                        <th class="text-center">
-                            School
-                        </th>
-                        <th class="text-center">
-                            District
-                        </th>
-                        @endif
                     </thead>
                     <tbody>
-                    @foreach ($teachers as $teacher)
+                    @foreach ($students as $student)
                         <tr>
                             <td class="text-center">
-                                {{ $teacher->first_name . ' ' . $teacher->last_name}}
+                                {{ $student->first_name . ' ' . $student->last_name}}
                             </td>
                             <td class="text-center">
-                                {{ $teacher->name }}
+                                {{ $student->name }}
                             </td>
-                            @if(auth()->user()->id==1)
-                            <td class="text-center">
-                                {{ $teacher->officename }}
-                            </td>
-                            <td class="text-center">
-                                {{ $teacher->district }}
-                            </td>
-                            @endif
                         </tr>
                     @endforeach
                     </tbody>
@@ -73,7 +57,7 @@
     <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready( function () {
-            $('#teachersTable').DataTable();
+            $('#studentsTable').DataTable();
         } );
     </script>
 @endpush
