@@ -56,6 +56,7 @@
 				</div>
 			</div>	
 		</div>
+		@if(auth()->user()->id==1)
 		<div class="row" style="margin-top: -30px">
 			<div class="col-lg-6">
 				<!-- No of Teachers -->
@@ -72,5 +73,6 @@
 				</div>
 			</div>
 		</div>
+		@endif
 	</div>
 @endsection

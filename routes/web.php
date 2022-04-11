@@ -66,6 +66,8 @@ Route::get('/learningresource/unverifiedFiles', [PersonnelController::class, 'di
 Route::post('/learningresource/addRemarks', [PersonnelController::class, 'addRemarks'])->name('learningresource.addRemarks');
 Route::post('/learningresource/verifyFile', [PersonnelController::class, 'verifyFile'])->name('learningresource.verifyFile');
 Route::get('/users/teachers', [PersonnelController::class, 'showTeacherList'])->name('users.showTeacherList');
+Route::get('/users/personnels', [PersonnelController::class, 'showPersonnelList'])->name('users.showPersonnelList');
+Route::get('/users/students', [TeacherController::class, 'showStudentList'])->name('users.showStudentList');
 
 //StudentController Routes
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
