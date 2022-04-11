@@ -34,13 +34,18 @@
                 <h5 class="title m-0">{{ __('Upload Files') }}</h5>
             </div>
             <div class="card-body">
-            <form action="{{ route('learningresource.uploadSubmit') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('learningresource.uploadSubmit') }}" method="POST" enctype="multipart/form-data" id="uploadForm">
                 @csrf
+
+                <div class="progress">
+                    <div class="bar"></div>
+                    <div class="percent">0%</div>
+                </div>
                 <!-- Hidden since user already logged in -->
                 <input type="hidden" name="uploadedbyid" value="{{ auth()->user()->id }}">
 
                 <!-- Input File Start -->
-                <input type="file" name="file" class="form-control">
+                <input type="file" name="file" id="poster" class="form-control mt-2">
                 <!-- Input File End -->
 
                 <!-- Grade Level Select Start -->
@@ -216,4 +221,51 @@
         }
     });
 </script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery/js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+
+<script type="text/javascript">
+    function validate(formData, jqForm, options) {
+        var form = jqForm[0];
+        if (!form.file.value) {
+            alert('File not found');
+            return false;
+        }
+    }
+
+    (function() {
+        var bar = $('.bar');
+        var percent = $('.percent');
+        var status = $('#status');
+
+        $('form').ajaxForm({
+            beforeSubmit: validate,
+            beforeSend: function() {
+                status.empty();
+                var percentVal = '0%';
+                var posterValue = $('input[name=file]').fieldValue();
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            uploadProgress: function(event, position, total, percentComplete) {
+                var percentVal = percentComplete + '%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            success: function() {
+                var percentVal = 'Wait, Saving';
+                bar.width(percentVal)
+                percent.html(percentVal);
+            },
+            complete: function(xhr) {
+                status.html(xhr.responseText);
+                alert('Uploaded Successfully');
+                //window.location.href = "/learningresource/upload"
+            }
+        });
+    })();
+</script>
+
+
 @endpush

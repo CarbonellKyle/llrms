@@ -30,22 +30,31 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
-                        <div class="form-group">
-                            <strong class="">Filename:</strong> {{ $file->filename }}
-                        </div>
-                        <div class="form-group">
-                            <strong class="">Filetype:</strong> {{ $file->filetype }}
-                        </div>
-                        <div class="form-group">
-                            <strong class="">Filesize:</strong> {{ $file->filesize }}
-                        </div>
-                        <div class="form-group">
-                            <strong class="">For:</strong> {{ $file->grade_level!=0 ? 'Grade ' . $file->grade_level . ' Students' : 'Kinder Students'}}
-                        </div>
-                        <div class="form-group">
-                            <strong class="">Subject:</strong> {{ $file->subject_name }}
-                        </div>
-                        <div class="form-group">
+                        <div class="row" style="margin-top: -15px">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <strong class="">Filename:</strong> {{ $file->filename }}
+                                </div>
+                                <div class="form-group">
+                                    <strong class="">Filetype:</strong> {{ $file->filetype }}
+                                </div>
+                                <div class="form-group">
+                                    <strong class="">Filesize:</strong> {{ $file->filesize }}
+                                </div>
+                                <div class="form-group">
+                                    <strong class="">For:</strong> {{ $file->grade_level!=0 ? 'Grade ' . $file->grade_level . ' Students' : 'Kinder Students'}}
+                                </div>
+                                <div class="form-group">
+                                    <strong class="">Subject:</strong> {{ $file->subject_name }}
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-success" title="See Students" style="background-color: #50b748">
+                                    {{ $noOfDownloads . ' Downloads' }}
+                                </button>
+                            </div>
+                        </div> 
+                        <div class="form-group" style="margin-top: -15px">
                             <strong class="">Description:</strong> {{ $file->filedescription }}
                         </div>
                         <div class="form-group">
