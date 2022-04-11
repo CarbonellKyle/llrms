@@ -37,10 +37,11 @@
             <form action="{{ route('learningresource.uploadSubmit') }}" method="POST" enctype="multipart/form-data" id="uploadForm">
                 @csrf
 
-                <div class="progress">
+                <!--<div class="progress">
                     <div class="bar"></div>
                     <div class="percent">0%</div>
-                </div>
+                </div>-->
+
                 <!-- Hidden since user already logged in -->
                 <input type="hidden" name="uploadedbyid" value="{{ auth()->user()->id }}">
 
